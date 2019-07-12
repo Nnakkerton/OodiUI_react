@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Category from '../Category/Category';
 import classes from './Categories.module.css';
+import Aux from '../../hoc/Aux';
+import Button from '../Button/Button';
 
 class Categories extends Component {
   state = {
@@ -14,31 +16,40 @@ class Categories extends Component {
       {id: '990', title: 'Autobiographies'},
       {id: '900', title: 'History'}
     ],
-    showCategories: true
+    showCategories: true,
+    chosenCategory: undefined
   }
 
-  hideCategoriesHandler = (event) => {
+  categoryPickedHandler = (category) => {
     console.log("hideCategoriesHandler activated");
-    this.setState({showCategories: false});
+    this.setState({showCategories: false, chosenCategory: category});
   }
 
   render() {
 
-    return (
-      this.state.categories.map( category => {
-        return (
-          <div key={category.id}>
-            {this.state.showCategories
-              ?<Category
-                className={classes.Categories}
-                title={category.title}
-                />
-              : null
-            }
-          </div>
-        );
-      })
-    );
+    if (this.state.showCategories) {
+
+      return (
+        <>
+        <h1>Look for a book category</h1>
+          {this.state.categories.map( category => {
+            return (
+                <Category
+                  key={category.id}
+                  id={category.id}
+                  className={classes.Categories}
+                  title={category.title}
+                  onClick={this.categoryPickedHandler}
+                  />
+            )
+          })
+        }
+      </>
+      );
+    }
+    else {
+      return <div>{Object.keys(this.state.chosenCategory)}</div>;
+    }
   }
 }
 

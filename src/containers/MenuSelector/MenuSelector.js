@@ -10,13 +10,20 @@ class MenuSelector extends Component {
   state = {
     showStart: true,
     showStartBtn: true,
+    showMain: true,
     menuType: ''
   }
 
   updateStartHandler = () => {
-    this.setState({showStart: false});
+    console.log("state changed");
     this.setState({showStartBtn: false});
     this.setState({menuType:'main'});
+  }
+
+  updateMainHandler = () => {
+    console.log("mainhandler changed");
+    this.setState({showMain: false});
+    this.setState({menuType:'category-guidance'});
   }
 
   render () {
@@ -26,10 +33,13 @@ class MenuSelector extends Component {
       case ('main'):
         menu = (
           <div>
-            <h1>Find a non-fiction book</h1>
-            <SearchForm />
-            <h1>Look for a book category</h1>
-            <Categories />
+            {this.state.showMain
+              ? <Aux>
+                  <h1>Find a non-fiction book</h1>
+                  <SearchForm />
+                    <Categories clicked={this.updateMainHandler}/>
+                </Aux>
+              : null}
           </div>
         );
         break;
@@ -67,7 +77,18 @@ class MenuSelector extends Component {
         );
         break;
       default:
-        menu = <StartMenu />
+        menu = (
+          <div>
+            {this.state.showStartBtn
+            ? <Aux>
+                <header>
+                  <h1><strong>Hey!</strong></h1>
+                  <h2>I am a book robot.<br />I will guide you to a non-fiction book&#39;s location. <br />I can only find non-fiction books.</h2>
+                  </header>
+                  <Button clicked={this.updateStartHandler}>Start Here</Button>
+              </Aux>
+            : null}
+          </div>);
     }
     return menu;
   }

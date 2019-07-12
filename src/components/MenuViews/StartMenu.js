@@ -19,7 +19,6 @@ class StartMenu extends Component {
         {this.state.showStartBtn
         ? <Aux>
             <header>
-              <h1>heheheh</h1>
               <h1><strong>Hey!</strong></h1>
               <h2>I am a book robot.<br />I will guide you to a non-fiction book&#39;s location. <br />I can only find non-fiction books.</h2>
               </header>
