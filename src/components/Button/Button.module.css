@@ -1,0 +1,24 @@
+.Button {
+  position:relative;
+  margin: 10pt;
+  width: 160pt;
+  height: 100pt;
+  left: 40%;
+  top: 225pt;
+  font-weight:800;
+  font-size: 18pt;
+  color: white;
+  background-color: rgb(2, 147, 71);
+  border-radius: 10px;
+
+}
+
+.Back {
+  background-color: rgb(0, 114, 188);
+  color: rgb(255, 255, 255);
+}
+
+.Category {
+  position:relative;
+
+}
