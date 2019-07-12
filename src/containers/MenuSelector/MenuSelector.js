@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Button from '../../../components/Button/Button';
-import Categories from '../../../components/Categories/Categories';
-import SearchForm from '../../../components/SearchForm/SearchForm';
-import Aux from '../../../hoc/Aux';
-import StartMenu from './MenuViews/StartMenu';
+import Button from '../../components/Button/Button';
+import Categories from '../../components/Categories/Categories';
+import SearchForm from '../../components/SearchForm/SearchForm';
+import Aux from '../../hoc/Aux';
+import StartMenu from '../../components/MenuViews/StartMenu';
 
 class MenuSelector extends Component {
   state = {
