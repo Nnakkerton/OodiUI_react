@@ -21,8 +21,13 @@ class Categories extends Component {
   }
 
   categoryPickedHandler = (category) => {
-    console.log("hideCategoriesHandler activated");
+    console.log("categoryPickedHandler activated");
     this.setState({showCategories: false, chosenCategory: category});
+
+  }
+
+  goBackHandler = () => {
+    this.setState({showCategories: true})
   }
 
   render() {
@@ -40,6 +45,7 @@ class Categories extends Component {
                   className={classes.Categories}
                   title={category.title}
                   onClick={this.categoryPickedHandler}
+                  clicked={this.props.clicked}
                   />
             )
           })
@@ -48,7 +54,16 @@ class Categories extends Component {
       );
     }
     else {
-      return <div>{Object.keys(this.state.chosenCategory)}</div>;
+      return (
+        <Aux>
+          <div>
+            <h1>Would you like to be guided to the category: <strong>{Object.entries(this.state.chosenCategory)[1][1]}</strong></h1>
+            <Button btnType="Back" clicked={() => {this.goBackHandler(); this.props.search()}}>Go Back</Button>
+            <Button>Proceed</Button>
+
+          </div>
+        </Aux>
+      )
     }
   }
 }

@@ -10,6 +10,8 @@ class Category extends Component {
 
   changeCategoryHandler = () => {
     this.props.onClick({id: this.props.id, title: this.props.title});
+    this.setState({category: true});
+    console.log("changeCategorySucceeded");
   }
 
   render() {
@@ -19,7 +21,7 @@ class Category extends Component {
         ? <Button
             btnType="Category"
             style={{alignItems: 'center'}}
-            clicked={this.changeCategoryHandler}
+            clicked={() => {this.changeCategoryHandler(); this.props.clicked()}}
             id={this.props.id}
             value={this.props.title}>
             {this.props.title}

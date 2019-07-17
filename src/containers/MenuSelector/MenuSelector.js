@@ -11,7 +11,9 @@ class MenuSelector extends Component {
     showStart: true,
     showStartBtn: true,
     showMain: true,
-    menuType: ''
+    menuType: '',
+    showSearchForm: true,
+    showCategories: true
   }
 
   updateStartHandler = () => {
@@ -20,10 +22,24 @@ class MenuSelector extends Component {
     this.setState({menuType:'main'});
   }
 
-  updateMainHandler = () => {
-    console.log("mainhandler changed");
-    this.setState({showMain: false});
-    this.setState({menuType:'category-guidance'});
+  updateToCategorySearchHandler = () => {
+    console.log("[updateToCategorySearchHandler] activated");
+    this.setState({showSearchForm: false});
+    //this.setState({showMain: false});
+    //this.setState({menuType:'category-guidance'});
+  }
+
+  updateToBookSearchHandler = () => {
+    console.log("[updateToBookSearchHandler] activated");
+    this.setState({showCategories: false});
+  }
+
+  showCategoriesHandler = () => {
+    this.setState({showCategories: true});
+  }
+
+  showSearchFormHandler = () => {
+    this.setState({showSearchForm: true});
   }
 
   render () {
@@ -31,17 +47,28 @@ class MenuSelector extends Component {
 
     switch (this.state.menuType) {
       case ('main'):
+      if (this.state.showMain){
         menu = (
-          <div>
-            {this.state.showMain
-              ? <Aux>
-                  <h1>Find a non-fiction book</h1>
-                  <SearchForm />
-                    <Categories clicked={this.updateMainHandler}/>
-                </Aux>
+          <Aux>
+            <div>
+            {this.state.showSearchForm
+              ?<SearchForm
+                clicked={this.updateToBookSearchHandler}
+                showCategories={this.showCategoriesHandler}/>
               : null}
-          </div>
-        );
+            </div>
+            <div>
+              {this.state.showCategories
+                ?<Categories
+                  clicked={this.updateToCategorySearchHandler}
+                  search={this.showSearchFormHandler}/>
+                : null}
+            </div>
+          </Aux>
+        );}
+      else {
+        menu = <Categories />;
+      }
         break;
       case ('book-search'):
         menu = (
