@@ -26,7 +26,7 @@ class Category extends Component {
             value={this.props.title}>
             {this.props.title}
           </Button>
-        : null};
+        : null}
       </div>
 
     );

@@ -25,8 +25,6 @@ class MenuSelector extends Component {
   updateToCategorySearchHandler = () => {
     console.log("[updateToCategorySearchHandler] activated");
     this.setState({showSearchForm: false});
-    //this.setState({showMain: false});
-    //this.setState({menuType:'category-guidance'});
   }
 
   updateToBookSearchHandler = () => {
@@ -54,7 +52,7 @@ class MenuSelector extends Component {
             {this.state.showSearchForm
               ?<SearchForm
                 clicked={this.updateToBookSearchHandler}
-                showCategories={this.showCategoriesHandler}/>
+                showCategories={this.showCa}/>
               : null}
             </div>
             <div>
@@ -69,39 +67,6 @@ class MenuSelector extends Component {
       else {
         menu = <Categories />;
       }
-        break;
-      case ('book-search'):
-        menu = (
-          <div>
-            <h1>Available books with the keyword: <strong>blaablaa</strong></h1>
-            <Button />
-          </div>
-        );
-        break;
-      case ('book-guidance'):
-        menu = (
-          <div>
-            <h1>Would you like to be guided to the book: <strong>blaablaa</strong></h1>
-            <Button btnType="Back" />
-            <Button />
-          </div>
-        );
-        break;
-      case ('category-guidance'):
-        menu = (
-          <div>
-            <h1>Would you like to be guided to the category: <strong>blaablaa</strong></h1>
-            <Button btnType="Back">Go Back</Button>
-            <Button>Proceed</Button>
-          </div>
-        );
-        break;
-      case ('guidance'):
-        menu = (
-          <div>
-          <h1>Let&#39;s go!</h1>
-          </div>
-        );
         break;
       default:
         menu = (
