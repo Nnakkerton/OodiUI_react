@@ -4,13 +4,14 @@ import Button from '../../components/Button/Button';
 import Categories from '../../components/Categories/Categories';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import Aux from '../../hoc/Aux';
-import StartMenu from '../../components/MenuViews/StartMenu';
+import classes from './MenuSelector.module.css';
+import { withTranslation, Trans } from 'react-i18next';
 
 class MenuSelector extends Component {
   state = {
     showStart: true,
     showStartBtn: true,
-    showMain: true,
+    showMain: false,
     menuType: '',
     showSearchForm: true,
     showCategories: true
@@ -19,7 +20,7 @@ class MenuSelector extends Component {
   updateStartHandler = () => {
     console.log("state changed");
     this.setState({showStartBtn: false});
-    this.setState({menuType:'main'});
+    this.setState({showMain: true});
   }
 
   updateToCategorySearchHandler = () => {
@@ -40,50 +41,63 @@ class MenuSelector extends Component {
     this.setState({showSearchForm: true});
   }
 
+  backToStartHandler = () => {
+    this.setState({showStartBtn: true});
+    this.setState({showMain: false});
+    this.setState({showSearchForm: true});
+    this.setState({showCategories: true});
+  }
+
   render () {
     let menu;
+    const { t } = this.props
 
-    switch (this.state.menuType) {
-      case ('main'):
-      if (this.state.showMain){
-        menu = (
-          <Aux>
-            <div>
-            {this.state.showSearchForm
-              ?<SearchForm
-                clicked={this.updateToBookSearchHandler}
-                showCategories={this.showCa}/>
-              : null}
-            </div>
-            <div>
-              {this.state.showCategories
-                ?<Categories
-                  clicked={this.updateToCategorySearchHandler}
-                  search={this.showSearchFormHandler}/>
-                : null}
-            </div>
-          </Aux>
-        );}
-      else {
-        menu = <Categories />;
-      }
-        break;
-      default:
-        menu = (
+    if (this.state.showMain){
+      menu = (
+        <Aux>
           <div>
-            {this.state.showStartBtn
-            ? <Aux>
-                <header>
-                  <h1><strong>Hey!</strong></h1>
-                  <h2>I am a book robot.<br />I will guide you to a non-fiction book&#39;s location. <br />I can only find non-fiction books.</h2>
-                  </header>
-                  <Button clicked={this.updateStartHandler}>Start Here</Button>
-              </Aux>
+          {this.state.showSearchForm
+            ?<SearchForm
+              clicked={this.updateToBookSearchHandler}
+              showCategories={this.showCategoriesHandler}
+              backToStart={this.backToStartHandler}/>
             : null}
-          </div>);
+          </div>
+          <div className={classes.Container}>
+            {this.state.showCategories
+              ?<Categories
+                className={classes.Categories}
+                clicked={this.updateToCategorySearchHandler}
+                search={this.showSearchFormHandler}
+                backToStart={this.backToStartHandler}/>
+              : null}
+          </div>
+        </Aux>
+      );}
+    else {
+      menu = (
+        <div>
+          {this.state.showStartBtn
+          ? <Aux>
+              <header className={classes.StartHeader}>
+              <Trans i18nKey='startMenu.header'>
+                <h1>
+                  <strong>{t('startMenu.header')}</strong>
+                </h1>
+              </Trans>
+                <h2>{t('startMenu.description1')}<br />
+                {t('startMenu.description2')}<br />
+                {t('startMenu.description3')}</h2>
+              </header>
+              <div className={classes.StartButton}>
+                <Button clicked={this.updateStartHandler}>{t('startMenu.startButton')}</Button>
+              </div>
+            </Aux>
+          : null}
+        </div>);
     }
     return menu;
   }
 };
 
-export default MenuSelector;
+export default withTranslation('common')(MenuSelector);

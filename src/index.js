@@ -7,11 +7,37 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
+import {I18nextProvider} from 'react-i18next';
+import i18next from 'i18next';
 
 //const store = createStore();
 // <Provider store={store}>
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import common_fi from "./assets/translations/fi/common.json";
+import common_en from "./assets/translations/en/common.json";
+import common_se from "./assets/translations/se/common.json";
+
+    i18next.init({
+        interpolation: { escapeValue: false },  // React already does escaping
+        lng: 'fi',                              // language to use
+        resources: {
+            fi: {
+                common: common_fi               // 'common' is our custom namespace
+            },
+            en: {
+                common: common_en
+            },
+            se: {
+                common: common_se
+            }
+        },
+    });
+
+ReactDOM.render(
+  <I18nextProvider i18n={i18next}>
+    <App />
+    </I18nextProvider>,
+    document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

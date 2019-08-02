@@ -1,6 +1,20 @@
 .SearchForm {
-  position: fixed;
-  top: 200px;
+  position: relative;
+  top: 50px;
   left: 400px;
-  width: 200px;
+  width: 600px;
+  height: 60px;
+  border: 1px solid;
+  font-size: 20pt;
+}
+
+.h1 {
+  text-align: center;
+}
+
+.Button {
+  position: relative;
+  float: right;
+
+
 }

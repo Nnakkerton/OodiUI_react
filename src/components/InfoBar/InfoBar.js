@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from '../Button/Button';
 import Aux from '../../hoc/Aux';
 import classes from './InfoBar.module.css';
+import { withTranslation, Trans } from 'react-i18next';
 
 class InfoBar extends Component {
   state = {
@@ -24,18 +25,19 @@ class InfoBar extends Component {
   }
 
   render() {
+    const { t } = this.props
 
     return(
       <div>
         {this.state.askGuidance === false
           ? <Aux>
               <div>
-              Title: <strong>{this.props.title}</strong><br />
-              Author: <strong>{this.props.author}</strong>
+              {t('bookSearch.title')} <strong>{this.props.title}</strong><br />
+              {t('bookSearch.author')} <strong>{this.props.author}</strong>
               </div>
               <Button clicked={() => {this.sendSelectedBookHandler(); this.props.clicked()}}>{this.props.title}</Button>
             </Aux>
-          :  <div>Would you like to look for the following book: {this.props.title}</div>
+          :  <div>{t('bookSearch.startGuidance')} {this.props.title}</div>
           }
       </div>
     )
@@ -45,4 +47,4 @@ class InfoBar extends Component {
 
 }
 
-export default InfoBar;
+export default withTranslation('common')(InfoBar);

@@ -12,6 +12,8 @@ import leftRightArrow from '../../assets/images/nuoli_iso_molemmat.svg';
 import upArrow from '../../assets/images/nuoli_iso_eteen.svg';
 import homeImage from '../../assets/images/koti.svg';
 
+import { withTranslation, Trans } from 'react-i18next';
+
 class Categories extends Component {
   state = {
 
@@ -34,7 +36,6 @@ class Categories extends Component {
   categoryPickedHandler = (category) => {
     console.log("categoryPickedHandler activated");
     this.setState({showCategories: false, chosenCategory: category});
-
   }
 
   goBackHandler = () => {
@@ -64,7 +65,7 @@ class Categories extends Component {
         console.log("The arrow response from the server is", response.data.data);
         if (response.data.data === 'home') {
           this.setState({arrowDirection: homeImage});
-          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point."})
+          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
           console.log("arrow is currently:", this.state.arrowDirection);
           return this.returnHomeHandler();
         }
@@ -81,7 +82,7 @@ class Categories extends Component {
           }
           else if (response.data.data === 'lr') {
             this.setState({arrowDirection: leftRightArrow});
-            this.setState({arrowMessage: "Look to your both sides"});
+            this.setState({arrowMessage: "Look to your both sides!"});
             console.log("received leftright arrow");
           }
           else {
@@ -107,7 +108,7 @@ class Categories extends Component {
         }
         else if (response.data.data === 'home2') {
           console.log("WE ARE BACK HOME!");
-          
+          this.props.backToStart();
         }
         else {
           console.log("received something else");
@@ -120,19 +121,20 @@ class Categories extends Component {
   }
 
   render() {
+    const { t } = this.props
 
     if (this.state.showCategories) {
 
       return (
         <>
-        <h1>Look for a book category</h1>
+        <h1 className={classes.h1}>{t('mainMenu.findCategory')}</h1>
           {this.state.categories.map( category => {
             return (
               <Category
                 key={category.id}
                 id={category.id}
                 className={classes.Categories}
-                title={category.title}
+                title={t(`categories.${category.title}`)}
                 onClick={this.categoryPickedHandler}
                 clicked={this.props.clicked}
               />
@@ -147,12 +149,12 @@ class Categories extends Component {
           <div>
             {this.state.startGuidance === false
               ? <Aux>
-                  <h1>Would you like to be guided to the category:   <strong>{Object.entries(this.state.chosenCategory)[1][1]}</strong></h1>
-                  <Button btnType="Back" clicked={() => {this.goBackHandler(); this.props.search()}}>Go Back</Button>
-                  <Button clicked={this.goToCategory}>Proceed</Button>
+                  <h1>{t('categorySearch.h1')} <strong>{Object.entries(this.state.chosenCategory)[1][1]}</strong></h1>
+                  <Button btnType="Back" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
+                  <Button clicked={this.goToCategory}>{t('button.proceed')}</Button>
                 </Aux>
               : <div>
-                <h1>{this.state.arrowMessage}</h1>
+                <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
                 <img src={this.state.arrowDirection} alt="arrow"/>
                 </div>
               }
@@ -162,4 +164,4 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+export default withTranslation('common')(Categories);

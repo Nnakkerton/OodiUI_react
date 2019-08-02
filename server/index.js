@@ -31,16 +31,14 @@ var bookId;
 
 app.get('/get_books', function(req, res) {
   let books;
-  books = { 1469241: {'title': 'Frantsilan yrttitilan kasviskeittokirja', 'author': 'Raipala-Cormier, Virpi'},
-        2251846: {'title': 'Uusimaa kuvissa : tarinoita ja tunnelmia Karkkilasta, Loviisasta, Porvoosta ja Vihdistä', 'author': 'Joku tyyppi'},
-        1469241: {'title': 'Frantsilan yrttitilan kasviskeittokirja', 'author': 'Raipala-Cormier, Virpi'},
-        2251840: {'title': 'Uusimaa kuvissa : tarinoita ja tunnelmia Karkkilasta, Loviisasta, Porvoosta ja Vihdistä', 'author': 'Joku tyyppi'},
-        1469242: {'title': 'Frantsilan yrttitilan kasviskeittokirja', 'author': 'Raipala-Cormier, Virpi'},
-        2251844: {'title': 'Uusimaa kuvissa : tarinoita ja tunnelmia Karkkilasta, Loviisasta, Porvoosta ja Vihhdistä', 'author': 'Joku tyyppi'},
-        1469241: {'title': 'Frantsilan yrttitilan kasviskeittokirja', 'author': 'Raipala-Cormier, Virpi'},
-        2251846: {'title': 'Uusimaan kuvissa : tarinoita ja tunnelmia Karkkilasta, Loviisasta, Porvoosta ja Vihdistä', 'author': 'Joku tyyppi'},
-        1469241: {'title': 'Frantsilan yrttitilan kasviskeittokirja', 'author': 'Raipala-Cormier, Virpi'},
-        2251846: {'title': 'Uusimaat kuvissa : tarinoita ja tunnelmia Karkkilasta, Loviisasta, Porvoosta ja Vihdistä', 'author': 'Joku tyyppi'}};
+  books = [{'title': 'Poukama : uutta luovaa kalastuskulttuuria', 'author': '', 'bibid': '2162373'}, {'title': 'Pohjolan kalastusopas', 'author': '', 'bibid': '1917599'}, {'title': 'Jigikalastus : perustekniikat, jigivalinta, ahven, kuha', 'author': 'Rannisto, Jari, kirjoittaja.', 
+  'bibid': '2297844'},
+  {'title': 'Suomalaisten kalastus. I-III', 'author': 'Sirelius, U. T.', 'bibid': '1922553'}, {'title': 'Suuri suomalainen perhokalastuskirja', 'author': 'Kanerva, Pertti', 'bibid': '2155345'},
+  {'title': 'Jousikirja : jousen historia, jousityypit, varusteet, jousiammunnan tekniikka, jousimetsästys, jousikalastus', 'author': 'Hyytinen, Timo, kirjoittaja.' ,'bibid': '2241808'},
+  {'title': 'Mäkiluoto : kalastustukikohdasta rannikkolinnakkeeksi',
+  'author': 'Enqvist, Ove, kirjoittaja.', 'bibid': '2336503'},
+  {'title': 'Kalastus : ammattilaisten salaisuudet helppoina vinkkeinä', 'author': 'Manninen, Ari, kirjoittaja, valokuvaaja.', 'bibid': '2277733'},
+  {'title': 'Eränkävijät. Metsästys- ja kalastustarinoita Suomesta', 'author': 'Kulju, Mika, kirjoittaja.', 'bibid': '2302591'}]
   res.json({books});
 })
 

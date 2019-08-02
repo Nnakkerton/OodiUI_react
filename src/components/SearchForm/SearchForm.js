@@ -12,6 +12,7 @@ import rightArrow from '../../assets/images/nuoli_iso_oikea.svg';
 import leftRightArrow from '../../assets/images/nuoli_iso_molemmat.svg';
 import upArrow from '../../assets/images/nuoli_iso_eteen.svg';
 import homeImage from '../../assets/images/koti.svg';
+import { withTranslation, Trans } from 'react-i18next';
 
 class SearchForm extends Component {
   state = {
@@ -88,7 +89,7 @@ class SearchForm extends Component {
         console.log("The arrow response from the server is", response.data.data);
         if (response.data.data === 'home') {
           this.setState({arrowDirection: homeImage});
-          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point."})
+          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
           console.log("arrow is currently:", this.state.arrowDirection);
           return this.returnHomeHandler();
         }
@@ -105,7 +106,7 @@ class SearchForm extends Component {
           }
           else if (response.data.data === 'lr') {
             this.setState({arrowDirection: leftRightArrow});
-            this.setState({arrowMessage: "Look to your both sides"});
+            this.setState({arrowMessage: "Look to your both sides!"});
             console.log("received leftright arrow");
           }
           else {
@@ -131,6 +132,7 @@ class SearchForm extends Component {
         }
         else if (response.data.data === 'home2') {
           console.log("WE ARE BACK HOME!");
+          this.props.backToStart();
 
         }
         else {
@@ -144,34 +146,35 @@ class SearchForm extends Component {
   }
 
   render() {
+    const { t } = this.props
 
-    //book[0] shows the id
-    //book[1].title and book[1].author show the book's title and author, in respect.
-
-
-
+    //book[1].title, book[1].author, book[1].bibid show the book's title, author and id, in respect.
 
     let form;
     if (this.state.notSearching) {
       form = (
         <Aux>
-          <h1>Find a non-fiction book</h1>
+          <h1 className={classes.h1}>{t('mainMenu.findBook')}</h1>
           <form>
             <input
               type="text"
               className={classes.SearchForm}
-              placeholder="Name of author or book"
+              placeholder={t('mainMenu.findBookPlaceholder')}
               onChange={this.searchTermHandler}
               values={this.state.searchTerm}
               />
-            <Button btnType="Search" clicked={() => {this.sendDataHandler(); this.props.clicked()}}></Button>
+            <div className={classes.Button}>
+              <Button btnType="Search" clicked={() => {this.sendDataHandler(); this.props.clicked()}}></Button>
+            </div>
           </form>
         </Aux>
       )
     }
     else {
       if (this.state.showSearchResultsHeader) {
-        form = <div>Available books with the keyword: <strong>{this.state.searchTerm}</strong>
+        form = <div>
+        {t('bookSearch.available')}
+        <strong>{this.state.searchTerm}</strong>
                 </div>
       }
     }
@@ -183,24 +186,25 @@ class SearchForm extends Component {
           ? null
           : <Aux>
             {this.state.showBackButton
-              ? <Button btnType="Back" clicked={() => {this.changeNotSearchingHandler();  this.props.showCategories()}}>Go Back</Button>
+              ? <Button btnType="Back" clicked={() => {this.changeNotSearchingHandler();  this.props.showCategories()}}>{t('button.back')}</Button>
               : null
             }
               {this.state.showInfoBars
               ? this.state.books.map(book => {
-                return <div key={book[0]}>
-                  <InfoBar author={book[1].author} title={book[1].title} id={book[0]} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[0])}}/>
+                return <div key={book[1].bibid}>
+                  <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[0])}}/>
                   </div>
               })
               : <div>
                 {this.state.guidanceStarted === false
                 ?  <Aux>
-                  <h1>Would you like to be guided to the following book: {this.state.chosenBook}</h1>
-                  <Button btnType="Back" clicked={this.changeInfoBarsStateTrueHandler}>Go Back</Button>
-                  <Button clicked={this.startGuidanceHandler}>Proceed</Button>
+                  <h1>{t('bookSearch.startGuidance')}
+                  {this.state.chosenBook}</h1>
+                  <Button btnType="Back" clicked={this.changeInfoBarsStateTrueHandler}>{t('button.back')}</Button>
+                  <Button clicked={this.startGuidanceHandler}>{t('button.proceed')}</Button>
                   </Aux>
                 : <div>
-                  <h1>{this.state.arrowMessage}</h1>
+                  <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
                   <img src={this.state.arrowDirection} alt="arrow"/>
                   </div>
             }
@@ -213,4 +217,4 @@ class SearchForm extends Component {
   }
 };
 
-export default SearchForm;
+export default withTranslation('common')(SearchForm);

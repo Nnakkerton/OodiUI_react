@@ -1,0 +1,47 @@
+{
+  "startMenu": {
+    "header": "Hej!",
+    "description1": "Jag är en bokrobot.",
+    "description2": "Jag guidar dig till en boks plats.",
+    "description3": "Jag kan bara hitta facklitteraturböcker.",
+    "startButton": "Börja"
+  },
+  "mainMenu": {
+    "findBook": "Sök efter en icke-fiktion bok",
+    "findBookPlaceholder": "Författarens eller bokens namn",
+    "findCategory": "Leta efter en bokkategori"
+  },
+  "bookSearch": {
+    "available": "Tillgängliga böcker med nyckelordet:",
+    "startGuidance": "Vill du bli guidad till följande bok:",
+    "title": "Titel:",
+    "author": "Författare:"
+
+  },
+  "categorySearch": {
+    "h1": "Vill du vägledas till kategorin:"
+
+  },
+  "arrows": {
+
+  },
+  "button": {
+    "back": "Gå tillbaka",
+    "proceed": "Fortsätt"
+  },
+  "categories": {
+    "Traveling": "Resa",
+    "Cooking": "Matlagning",
+    "Arts": "Konst",
+    "Languages": "Språk",
+    "Autobiographies": "Självbiografier ",
+    "History": "Historia"
+  },
+  "arrowMessage": {
+    "Let's go!": "Nu går vi",
+    "Look to your left!": "Se till vänster!",
+    "Look to your right!": "Se till höger!",
+    "Look to your both sides!": "Se till båda sidorna",
+    "Bye bye! I'm going back to the starting point!": "Hejdå! Jag går tillbaka till utgångspunkten."
+  }
+}

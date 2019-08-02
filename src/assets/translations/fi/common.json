@@ -1,0 +1,44 @@
+{
+  "startMenu": {
+    "header": "Hei!",
+    "description1": "Olen kirjarobotti.",
+    "description2": "Opastan sinut etsimäsi kirjan luokse.",
+    "description3": "Osaan etsiä vain tietokirjallisuutta.",
+    "startButton": "Aloita"
+  },
+  "mainMenu": {
+    "findBook": "Etsi tietokirjallisuutta hakusanalla.",
+    "findBookPlaceholder": "Kirjailijan tai teoksen nimi",
+    "findCategory": "Etsi jokin kategoria"
+  },
+  "bookSearch": {
+    "available": "Löydettiin seuraavat kirjat hyllystä hakusanalla:",
+    "startGuidance": "Haluatko opastuksen seuraavan kirjan luokse:",
+    "title": "Teos:",
+    "author": "Tekijä:"
+  },
+  "categorySearch": {
+    "h1": "Haluatko opastuksen seuraavan kategorian luokse:"
+  },
+  "arrows": {
+  },
+  "button": {
+    "back": "Takaisin",
+    "proceed": "Opasta"
+  },
+  "categories": {
+    "Traveling": "Matkailu",
+    "Cooking": "Ruoanlaitto",
+    "Arts": "Taide",
+    "Languages": "Kielet",
+    "Autobiographies": "Elämäkerrat",
+    "History": "Historia"
+  },
+  "arrowMessage": {
+    "Let's go!": "Seuraa minua!",
+    "Look to your left!": "Katso vasemalle puolelle!",
+    "Look to your right!": "Katso oikealle puolelle!",
+    "Look to your both sides!": "Katso kummaltakin puolelta",
+    "Bye bye! I'm going back to the starting point!": "Hei hei, menen takaisin kotipisteeseeni."
+  }
+}

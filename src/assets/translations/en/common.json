@@ -1,0 +1,46 @@
+{
+  "startMenu": {
+    "header": "Hey!",
+    "description1": "I am a book robot.",
+    "description2": "I will guide you to a book's location.",
+    "description3": "I can only find non-fiction books.",
+    "startButton": "Start here"
+  },
+  "mainMenu": {
+    "findBook": "Search for a non-fiction book",
+    "findBookPlaceholder": "Name of the author or book",
+    "findCategory": "Look for a book category"
+  },
+  "bookSearch": {
+    "available": "Available books with the keyword:",
+    "startGuidance": "Would you like to be guided to the following book:",
+    "title": "Title:",
+    "author": "Author:"
+  },
+  "categorySearch": {
+    "h1": "Would you like to be guided to the category:"
+  },
+  "arrows": {
+  },
+  "button": {
+    "back": "Go Back",
+    "proceed": "Proceed"
+  },
+  "categories": {
+    "Traveling": "Traveling",
+    "Cooking": "Cooking",
+    "Arts": "Arts",
+    "Languages": "Languages",
+    "Autobiographies": "Autobiographies",
+    "History": "History"
+  },
+  "arrowMessage": {
+    "Let's go!": "Let's go!",
+    "Look to your left!": "Look to your left!",
+    "Look to your right!": "Look to your right!",
+    "Look to your both sides!": "Look to your both sides",
+    "Bye bye! I'm going back to the starting point!": "Bye bye! I'm going back to the starting point."
+
+  }
+
+}

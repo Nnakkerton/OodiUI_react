@@ -1,9 +1,10 @@
 .BottomLogo {
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  box-sizing:border-box;
-}
+  width: 100%;
+  
 
+}
 .BottomLogo img {
   width: 100%;
 }

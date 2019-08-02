@@ -1,0 +1,28 @@
+.StartHeader {
+  position: relative;
+  font-size: 30pt;
+  text-align: center;
+}
+
+.StartButton {
+  position: relative;
+  top: -100pt;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Container {
+  position: relative;
+  max-width: 600pt;
+  align-items: auto;
+  display:inline-block;
+  text-align: center;
+  float: center;
+}
+
+.Categories {
+  display: inline-block;
+  background-color: red;
+}
