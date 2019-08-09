@@ -1,0 +1,104 @@
+.TitleHolder {
+  position: fixed;
+  left: 81px;
+  top: 55px;
+	height: 64px;
+	width: 1293px;
+	color: #000000;
+	font-family: "Helsinki Grotesk";
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 64px;
+}
+
+.TheNearestWc {
+  position: fixed;
+  left: 81px;
+  top: 55px;
+	height: 64px;
+	width: 1293px;
+	color: #000000;
+	font-family: "Helsinki Grotesk";
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 64px;
+}
+
+.rectangle {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+}
+
+.OodiBox {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+  border: 0px;
+}
+
+.MapBox {
+  position: fixed;
+  border: 1px solid;
+  top: 130px;
+  left: 82px;
+  height: 598px;
+  width: 1457px;
+}
+
+.WouldYouLikeToilet {
+  position: fixed;
+  top: 720px;
+  left: 232px;
+	height: 107.2px;
+	width: 1158px;
+	color: #1F1F1F;
+	font-family: "Helsinki Grotesk";
+	font-size: 65px;
+	font-weight: bold;
+	line-height: 107px;
+	text-align: center;
+}
+
+.No {
+  position: fixed;
+  top: 898px;
+  left: 436px;
+	height: 97px;
+	width: 349px;
+	border: 4.2px solid #000000;
+}
+
+.Yes {
+  position: fixed;
+  top: 898px;
+  left: 815px;
+  height: 97px;
+  width: 349px;
+  background-color: #000000;
+}
+
+.IconWave {
+  position: fixed;
+  top: 1104px;
+  left: 0px;
+  height: 96px;
+  width: 1600px;
+  background: #F4D9E5;
+  mask: url(../../assets/images/Border-Bottom.svg);
+}
+
+.OodiPink {
+  position: fixed;
+  top: 1104px;
+  left: 0px;
+  height: 96px;
+  width: 1600px;
+  background-color: #F4D9E5;
+}

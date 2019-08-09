@@ -1,0 +1,20 @@
+.SearchBar {
+  position: fixed;
+  top: 400px;
+  left: 81px;
+  width: 1283px;
+  height: 97px;
+  border-radius: 13px;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 75px;
+  font-family: "Helsinki Grotesk";
+  border: 0px;
+  text-align: 200px 52px;
+}
+
+.Button {
+  position: fixed;
+  float: right;
+  visibility: hidden;
+}

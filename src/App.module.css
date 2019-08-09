@@ -1,0 +1,21 @@
+.Languages {
+  position: fixed;
+  top: 50px;
+  left: 1100px;
+  height: 42px;
+  width: 400px;
+  text-align: right;
+  font-family: "Helsinki Grotesk";
+}
+
+.Language {
+  top: 0pt;
+  left: 0%;
+  height: 32pt;
+  width: 75pt;
+  background: white;
+  font-size: 25px;
+  line-height: 32px;
+  border: 0px;
+  margin: 5px;
+}

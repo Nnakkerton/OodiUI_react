@@ -1,11 +1,16 @@
 .SearchForm {
-  position: relative;
-  top: 50px;
-  left: 400px;
-  width: 600px;
-  height: 60px;
-  border: 1px solid;
-  font-size: 20pt;
+  position: fixed;
+  top: 40px;
+  left: 81px;
+  width: 1283px;
+  height: 97px;
+  border-radius: 13px;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 75px;
+  font-family: "Helsinki Grotesk";
+  border: 0px;
+  text-align: 200px 52px;
 }
 
 .h1 {
@@ -13,8 +18,26 @@
 }
 
 .Button {
-  position: relative;
+  position: fixed;
   float: right;
+  visibility: hidden;
+}
 
+.rectangle {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+}
 
+.OodiBox {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+  border: 0px;
 }

@@ -6,13 +6,15 @@ import Aux from '../../hoc/Aux';
 import Button from '../Button/Button';
 import InfoBar from '../InfoBar/InfoBar';
 import MenuSelector from '../../containers/MenuSelector/MenuSelector';
+import SearchBar from '../SearchBar/SearchBar';
 
-import leftArrow from '../../assets/images/nuoli_iso_vasen.svg';
-import rightArrow from '../../assets/images/nuoli_iso_oikea.svg';
-import leftRightArrow from '../../assets/images/nuoli_iso_molemmat.svg';
-import upArrow from '../../assets/images/nuoli_iso_eteen.svg';
-import homeImage from '../../assets/images/koti.svg';
+import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
+import rightArrow from '../../assets/images/Icon-Arrow-Right.svg';
+import upArrow from '../../assets/images/Icon-Arrow-Up.svg';
+import homeImage from '../../assets/images/Icon-Home.svg';
 import { withTranslation, Trans } from 'react-i18next';
+
+import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 
 class SearchForm extends Component {
   state = {
@@ -21,12 +23,12 @@ class SearchForm extends Component {
     books: [],
     showInfoBars: true,
     showBackButton: true,
-    showSearchResultsHeader: true,
+    showSearchResultsHeader: false,
     chosenBook: '',
     chosenBookId: '',
     arrowMessage: '',
     arrowDirection: '',
-    guidanceStarted: false
+    guidanceStarted: false,
   }
 
   searchTermHandler = (event) => {
@@ -34,6 +36,7 @@ class SearchForm extends Component {
   }
 
   sendDataHandler = () => {
+    this.setState({showSearchResultsHeader: true});
     this.setState({notSearching: false})
     console.log(this.state.searchTerm);
     let searchTerm = this.state.searchTerm;
@@ -81,44 +84,55 @@ class SearchForm extends Component {
     console.log("Infobars will be SHOWN");
   }
 
-  startGuidanceHandler = () => {
-    this.setState({guidanceStarted: true});
+  startGuidanceHandler = (bookId) => {
+    this.setState({guidanceStarted: true})
     axios
-      .get('http://localhost:3001/guidance')
-      .then( response => {
-        console.log("The arrow response from the server is", response.data.data);
-        if (response.data.data === 'home') {
-          this.setState({arrowDirection: homeImage});
-          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
-          console.log("arrow is currently:", this.state.arrowDirection);
-          return this.returnHomeHandler();
+      .post('http://localhost:3001/selected_book', {bookId})
+      .then(() => ( this.getArrowSignalHandler()
+      ))
+      .catch(err => {
+        console.log(err)
+      })
+
+  }
+
+  getArrowSignalHandler = () => {
+    axios
+    .get('http://localhost:3001/guidance')
+    .then( response => {
+      console.log("The arrow response from the server is", response.data.data);
+      if (response.data.data === 'home') {
+        this.setState({arrowDirection: homeImage});
+        this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
+        console.log("arrow is currently:", this.state.arrowDirection);
+        return this.returnHomeHandler();
+      }
+      else {
+        if (response.data.data === 'l') {
+          this.setState({arrowDirection: leftArrow});
+          this.setState({arrowMessage: "Look to your left!"});
+          console.log("received left arrow");
+        }
+        else if (response.data.data === 'r') {
+          this.setState({arrowDirection: rightArrow});
+          this.setState({arrowMessage: "Look to your right!"});
+          console.log("received right arrow");
+        }
+        else if (response.data.data === 'lr') {
+          this.setState({arrowDirection: leftArrow});
+          this.setState({arrowMessage: "Look to your both sides!"});
+          console.log("received leftright arrow");
         }
         else {
-          if (response.data.data === 'l') {
-            this.setState({arrowDirection: leftArrow});
-            this.setState({arrowMessage: "Look to your left!"});
-            console.log("received left arrow");
-          }
-          else if (response.data.data === 'r') {
-            this.setState({arrowDirection: rightArrow});
-            this.setState({arrowMessage: "Look to your right!"});
-            console.log("received right arrow");
-          }
-          else if (response.data.data === 'lr') {
-            this.setState({arrowDirection: leftRightArrow});
-            this.setState({arrowMessage: "Look to your both sides!"});
-            console.log("received leftright arrow");
-          }
-          else {
-            this.setState({arrowDirection: upArrow});
-            this.setState({arrowMessage: "Let's go!"});
-            console.log("no matching arrow");
-          }
-          setTimeout(this.startGuidanceHandler, 2000)
+          this.setState({arrowDirection: upArrow});
+          this.setState({arrowMessage: "Let's go!"});
+          console.log("no matching arrow");
         }
-      })
-      .catch(err => {
-        console.log(err);
+        setTimeout(this.getArrowSignalHandler, 2000)
+      }
+    })
+    .catch(err => {
+      console.log(err);
       })
   }
 
@@ -154,17 +168,16 @@ class SearchForm extends Component {
     if (this.state.notSearching) {
       form = (
         <Aux>
-          <h1 className={classes.h1}>{t('mainMenu.findBook')}</h1>
           <form>
             <input
               type="text"
               className={classes.SearchForm}
-              placeholder={t('mainMenu.findBookPlaceholder')}
+              placeholder={t('bookMenu.findBookPlaceholder')}
               onChange={this.searchTermHandler}
               values={this.state.searchTerm}
               />
             <div className={classes.Button}>
-              <Button btnType="Search" clicked={() => {this.sendDataHandler(); this.props.clicked()}}></Button>
+              <input type="submit" onClick={() => {this.sendDataHandler(); this.props.clicked()}} />
             </div>
           </form>
         </Aux>
@@ -181,6 +194,8 @@ class SearchForm extends Component {
 
     return (
       <div>
+      <SearchBar />
+
         {form}
           {this.state.notSearching
           ? null
@@ -192,7 +207,7 @@ class SearchForm extends Component {
               {this.state.showInfoBars
               ? this.state.books.map(book => {
                 return <div key={book[1].bibid}>
-                  <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[0])}}/>
+                  <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[1].bibid)}}/>
                   </div>
               })
               : <div>
@@ -201,7 +216,7 @@ class SearchForm extends Component {
                   <h1>{t('bookSearch.startGuidance')}
                   {this.state.chosenBook}</h1>
                   <Button btnType="Back" clicked={this.changeInfoBarsStateTrueHandler}>{t('button.back')}</Button>
-                  <Button clicked={this.startGuidanceHandler}>{t('button.proceed')}</Button>
+                  <Button clicked={() => this.startGuidanceHandler(this.state.chosenBookId)}>{t('button.proceed')}</Button>
                   </Aux>
                 : <div>
                   <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>

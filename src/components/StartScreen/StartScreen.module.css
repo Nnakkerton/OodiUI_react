@@ -1,0 +1,55 @@
+.OodiBox {
+  position: fixed;
+  top: 35px;
+  left: 35px;
+  height: 82px;
+  width: 596px;
+}
+
+.OodiPic {
+  position: fixed;
+  top: 7px;
+  left: 35px;
+  border: 0px;
+}
+
+.p {
+  position: fixed;
+  top: 35px;
+  left: 309.5px;
+  height: 32px;
+  width: 321px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.Hey {
+  position: fixed;
+  top: 120px;
+  left: 672px;
+  height: 185px;
+  width: 260px;
+  color: #1F1F1F;
+  font-weight: bold;
+  font-size: 130px;
+  text-align: center;
+}
+
+.Explanation {
+  position: fixed;
+  top: 342px;
+  left: 453px;
+  height: 120px;
+  width: 694px;
+  color: #1F1F1F;
+  font-size: 50px;
+  text-align: center;
+}
+
+.StartLogo {
+  position: fixed;
+  bottom: 0px;
+  left: 2px;
+}

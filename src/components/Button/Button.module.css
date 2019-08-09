@@ -28,3 +28,60 @@
   height: 37.5pt;
   width: 60pt;
 }
+
+.Language {
+  top: 0pt;
+  left: 0%;
+  height: 32pt;
+  width: 69pt;
+  background: white;
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.SearchBooks {
+  height: 150pt;
+  width: 1000px;
+}
+
+.Toilet {
+  height: 150pt;
+  width: 1000px;
+}
+
+.Food {
+  height: 150pt;
+  width: 1000px;
+}
+
+.NoToilet {
+  position: fixed;
+  top: 898px;
+  left: 436px;
+	height: 97px;
+	width: 349px;
+  color: black;
+	border: 4.2px solid #000000;
+  background-color: #FFFFFF;
+  border-radius: 0px;
+}
+
+.Proceed {
+  position: fixed;
+  top: 898px;
+  left: 815px;
+  height: 97px;
+  width: 349px;
+  background-color: #000000;
+  border-radius: 0px;
+}
+
+.Start {
+  position: fixed;
+  top: 517px;
+  left: 625px;
+  height: 97px;
+  width: 349px;
+  background-color: #000000;
+  border-radius: 0px;
+}

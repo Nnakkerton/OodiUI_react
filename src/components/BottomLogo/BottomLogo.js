@@ -1,6 +1,6 @@
 import React from 'react';
 
-import bottomLogo from '../../assets/images/pagebottom.jpg';
+import bottomLogo from '../../assets/images/Border-Image.png';
 import classes from './BottomLogo.module.css';
 
 const logo = (props) => (

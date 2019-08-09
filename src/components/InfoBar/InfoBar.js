@@ -15,13 +15,7 @@ class InfoBar extends Component {
   sendSelectedBookHandler = () => {
     this.setState({notSearching: false});
     this.setState({askGuidance: true});
-    let bookId = this.props.id
-    axios
-      .post('http://localhost:3001/selected_book', {bookId})
-      .then(() => console.log("Id was sent succesfully"))
-      .catch(err => {
-        console.log(err)
-      })
+    
   }
 
   render() {

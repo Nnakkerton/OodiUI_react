@@ -1,15 +1,31 @@
 {
   "startMenu": {
     "header": "Hei!",
-    "description1": "Olen kirjarobotti.",
-    "description2": "Opastan sinut etsimäsi kirjan luokse.",
-    "description3": "Osaan etsiä vain tietokirjallisuutta.",
+    "description1": "Autan sinua löytämään tiesi kirjastossa",
     "startButton": "Aloita"
   },
   "mainMenu": {
-    "findBook": "Etsi tietokirjallisuutta hakusanalla.",
-    "findBookPlaceholder": "Kirjailijan tai teoksen nimi",
-    "findCategory": "Etsi jokin kategoria"
+    "bookSelector": {
+      "books": "Kirjat",
+      "bookText": "Etsi kirjoja hakusanan tai kategorian avulla."
+      },
+    "toiletSelector": {
+      "toilet": "WC",
+      "toiletText": "Etsi lähin julkinen WC-tila."
+      },
+    "foodSelector": {
+      "food": "Kahvila",
+      "foodText": "Välipalaa ja kahvia kahvilastamme."
+      }
+  },
+  "toiletOrFoodScreen": {
+    "nearestWC": "Lähin WC on:",
+    "cafeIs": "Kahvila on:",
+    "wouldYouLike": "Haluatko, että vien sinut perille asti?"
+  },
+  "bookMenu": {
+    "findBookPlaceholder": "Etsi kirjoja...",
+    "findCategory": "Kategoriat:"
   },
   "bookSearch": {
     "available": "Löydettiin seuraavat kirjat hyllystä hakusanalla:",

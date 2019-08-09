@@ -1,15 +1,31 @@
 {
   "startMenu": {
     "header": "Hej!",
-    "description1": "Jag är en bokrobot.",
-    "description2": "Jag guidar dig till en boks plats.",
-    "description3": "Jag kan bara hitta facklitteraturböcker.",
+    "description1": "Jag är här för att hjälpa dig hitta dig runt biblioteket",
     "startButton": "Börja"
   },
   "mainMenu": {
-    "findBook": "Sök efter en icke-fiktion bok",
-    "findBookPlaceholder": "Författarens eller bokens namn",
-    "findCategory": "Leta efter en bokkategori"
+    "bookSelector": {
+      "books": "Böcker",
+      "bookText": "Sök eller bläddra efter kategorier."
+      },
+    "toiletSelector": {
+      "toilet": "Toalett",
+      "toiletText": "Hitta de närmaste offentliga toaletterna"
+      },
+    "foodSelector": {
+      "food": "Mat & dryck",
+      "foodText": "Snacks och kaffe från vårt kafé."
+      }
+  },
+  "toiletOrFoodScreen": {
+    "nearestWC": "Den närmaste toaletten är:",
+    "cafeIs": "Kaféet är här:",
+    "wouldYouLike": "Vill du att jag ska ta dig dit?"
+  },
+  "bookMenu": {
+    "findBookPlaceholder": "Sök efter böcker...",
+    "findCategory": "Bok kategorier:"
   },
   "bookSearch": {
     "available": "Tillgängliga böcker med nyckelordet:",

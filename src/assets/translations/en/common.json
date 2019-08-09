@@ -1,15 +1,31 @@
 {
   "startMenu": {
     "header": "Hey!",
-    "description1": "I am a book robot.",
-    "description2": "I will guide you to a book's location.",
-    "description3": "I can only find non-fiction books.",
+    "description1": "I am here to help you find your way around the library",
     "startButton": "Start here"
   },
   "mainMenu": {
-    "findBook": "Search for a non-fiction book",
-    "findBookPlaceholder": "Name of the author or book",
-    "findCategory": "Look for a book category"
+    "bookSelector": {
+      "books": "Books",
+      "bookText": "Search or browse by categories."
+      },
+    "toiletSelector": {
+      "toilet": "WC",
+      "toiletText": "Find the nearest public restrooms"
+      },
+    "foodSelector": {
+      "food": "Food & drink",
+      "foodText": "Snacks and coffee from our café."
+      }
+  },
+  "toiletOrFoodScreen": {
+    "nearestWC": "The nearest WC:",
+    "cafeIs": "The cafe is here:",
+    "wouldYouLike": "Would you like me to bring you there?"
+  },
+  "bookMenu": {
+    "findBookPlaceholder": "Search for books...",
+    "findCategory": "Book Categories:"
   },
   "bookSearch": {
     "available": "Available books with the keyword:",

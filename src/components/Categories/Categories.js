@@ -6,11 +6,11 @@ import classes from './Categories.module.css';
 import Aux from '../../hoc/Aux';
 import Button from '../Button/Button';
 
-import leftArrow from '../../assets/images/nuoli_iso_vasen.svg';
-import rightArrow from '../../assets/images/nuoli_iso_oikea.svg';
-import leftRightArrow from '../../assets/images/nuoli_iso_molemmat.svg';
-import upArrow from '../../assets/images/nuoli_iso_eteen.svg';
-import homeImage from '../../assets/images/koti.svg';
+import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
+import RightArrow from '../../assets/images/Icon-Arrow-Right.svg';
+import UpArrow from '../../assets/images/Icon-Arrow-Up.svg';
+import HomeImage from '../../assets/images/Icon-Home.svg';
+import BookLogo from '../../assets/images/Icon-Book.svg';
 
 import { withTranslation, Trans } from 'react-i18next';
 
@@ -64,7 +64,7 @@ class Categories extends Component {
 
         console.log("The arrow response from the server is", response.data.data);
         if (response.data.data === 'home') {
-          this.setState({arrowDirection: homeImage});
+          this.setState({arrowDirection: HomeImage});
           this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
           console.log("arrow is currently:", this.state.arrowDirection);
           return this.returnHomeHandler();
@@ -76,17 +76,17 @@ class Categories extends Component {
             console.log("received left arrow");
           }
           else if (response.data.data === 'r') {
-            this.setState({arrowDirection: rightArrow});
+            this.setState({arrowDirection: RightArrow});
             this.setState({arrowMessage: "Look to your right!"});
             console.log("received right arrow");
           }
           else if (response.data.data === 'lr') {
-            this.setState({arrowDirection: leftRightArrow});
+            this.setState({arrowDirection: leftArrow});
             this.setState({arrowMessage: "Look to your both sides!"});
             console.log("received leftright arrow");
           }
           else {
-            this.setState({arrowDirection: upArrow});
+            this.setState({arrowDirection: UpArrow});
             this.setState({arrowMessage: "Let's go!"});
             console.log("no matching arrow");
           }
@@ -127,7 +127,11 @@ class Categories extends Component {
 
       return (
         <>
-        <h1 className={classes.h1}>{t('mainMenu.findCategory')}</h1>
+        <div className={classes.categoryHeader}>
+          <img src={BookLogo} alt="Book" className={classes.BookLogo}/>
+          <h1 className={classes.h1}>{t('bookMenu.findCategory')}</h1>
+        </div>
+        <div className={classes.categoriesArranged}>
           {this.state.categories.map( category => {
             return (
               <Category
@@ -141,6 +145,7 @@ class Categories extends Component {
             )
           })
         }
+        </div>
       </>
       );
     }
