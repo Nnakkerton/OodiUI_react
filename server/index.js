@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.post('/searchterm', function(req, res) {
-  let searchTerm = req.body.searchTerm;
+  let searchTerm = req.body.search;
   console.log("SERVER RECEIVED SEARCHTERM:", searchTerm);
   res.json({success: true});
 })
@@ -31,7 +31,7 @@ var bookId;
 
 app.get('/get_books', function(req, res) {
   let books;
-  books = [{'title': 'Poukama : uutta luovaa kalastuskulttuuria', 'author': '', 'bibid': '2162373'}, {'title': 'Pohjolan kalastusopas', 'author': '', 'bibid': '1917599'}, {'title': 'Jigikalastus : perustekniikat, jigivalinta, ahven, kuha', 'author': 'Rannisto, Jari, kirjoittaja.', 
+  books = [{'title': 'Poukama : uutta luovaa kalastuskulttuuria', 'author': '', 'bibid': '2162373'}, {'title': 'Pohjolan kalastusopas', 'author': '', 'bibid': '1917599'}, {'title': 'Jigikalastus : perustekniikat, jigivalinta, ahven, kuha', 'author': 'Rannisto, Jari, kirjoittaja.',
   'bibid': '2297844'},
   {'title': 'Suomalaisten kalastus. I-III', 'author': 'Sirelius, U. T.', 'bibid': '1922553'}, {'title': 'Suuri suomalainen perhokalastuskirja', 'author': 'Kanerva, Pertti', 'bibid': '2155345'},
   {'title': 'Jousikirja : jousen historia, jousityypit, varusteet, jousiammunnan tekniikka, jousimetsästys, jousikalastus', 'author': 'Hyytinen, Timo, kirjoittaja.' ,'bibid': '2241808'},

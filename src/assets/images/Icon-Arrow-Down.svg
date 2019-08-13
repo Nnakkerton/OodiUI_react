@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
-    <title>Icon-Arrow-Down</title>
+    <title>Icon-Arrow-Left</title>
     <desc>Created with Sketch.</desc>
-    <g id="Icon-Arrow-Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Fill-3" fill="#000000" transform="translate(90.195000, 90.095000) rotate(-90.000000) translate(-90.195000, -90.095000) " points="8.79 82.7419926 24.405564 98.3397551 79.1592012 43.6250362 79.1592012 178.79 101.246456 178.79 101.246456 43.635466 155.989655 98.3397551 171.6 82.7419926 90.1976096 1.4"></polygon>
+    <g id="Icon-Arrow-Left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Fill-3" fill="#000000" transform="translate(90.595000, 90.305000) rotate(180.000000) translate(-90.595000, -90.305000) " points="9.19 82.9519926 24.805564 98.5497551 79.5592012 43.8350362 79.5592012 179 101.646456 179 101.646456 43.845466 156.389655 98.5497551 172 82.9519926 90.5976096 1.61"></polygon>
     </g>
 </svg>

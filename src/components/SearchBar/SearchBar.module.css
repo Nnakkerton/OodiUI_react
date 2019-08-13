@@ -1,6 +1,6 @@
 .SearchBar {
   position: fixed;
-  top: 400px;
+  top: 40px;
   left: 81px;
   width: 1283px;
   height: 97px;
@@ -17,4 +17,77 @@
   position: fixed;
   float: right;
   visibility: hidden;
+}
+
+.BottomBar {
+  position: fixed;
+  top: 1090px;
+  left: 0px;
+  width: 1600px;
+  height: 110px;
+}
+
+.Container {
+  position: absolute;
+  top: 201px;
+  left: 15px;
+  height: 889px;
+  width: 1585px;
+  overflow-y:scroll;
+}
+
+.BackButton {
+  position: fixed;
+  top: 1111px;
+  left: 35px;
+  height: 70px;
+  width: 200px;
+}
+
+.LeftArrow {
+  position: fixed;
+  top: 1111px;
+  left: 35px;
+  height: 70px;
+  width: 70px;
+}
+
+.BackButtonText {
+  position: fixed;
+  top: 1085px;
+  left: 140px;
+  height: 51px;
+  width: 89px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 51px;
+}
+
+.ResultsNumber {
+  position: fixed;
+  top: 1118px;
+  left: 1377px;
+  height: 51px;
+  width: 189px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 51px;
+  text-align: right;
+  margin: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #DDDDE7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6F6E6E;
+  border-radius: 10px;
 }

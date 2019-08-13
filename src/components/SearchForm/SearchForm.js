@@ -5,16 +5,16 @@ import classes from './SearchForm.module.css';
 import Aux from '../../hoc/Aux';
 import Button from '../Button/Button';
 import InfoBar from '../InfoBar/InfoBar';
-import MenuSelector from '../../containers/MenuSelector/MenuSelector';
+//import MenuSelector from '../../containers/MenuSelector/MenuSelector';
 import SearchBar from '../SearchBar/SearchBar';
 
 import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
 import rightArrow from '../../assets/images/Icon-Arrow-Right.svg';
 import upArrow from '../../assets/images/Icon-Arrow-Up.svg';
 import homeImage from '../../assets/images/Icon-Home.svg';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
-import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
+//import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 
 class SearchForm extends Component {
   state = {
@@ -29,6 +29,7 @@ class SearchForm extends Component {
     arrowMessage: '',
     arrowDirection: '',
     guidanceStarted: false,
+    keepBackButtonUnchanged: true
   }
 
   searchTermHandler = (event) => {
@@ -94,6 +95,14 @@ class SearchForm extends Component {
         console.log(err)
       })
 
+  }
+
+  keepBackButtonUnchangedHandler = () => {
+    this.setState({keepBackButtonUnchanged: true});
+  }
+
+  changeBackButtonHandler = () => {
+    this.setState({keepBackButtonUnchanged: false});
   }
 
   getArrowSignalHandler = () => {
@@ -194,7 +203,15 @@ class SearchForm extends Component {
 
     return (
       <div>
-      <SearchBar />
+      <SearchBar clicked={() => {this.props.clicked(); this.changeBackButtonHandler();}} showCategories={this.props.showCategories} changeBackButton={this.keepBackButtonUnchangedHandler}/>
+      {this.state.keepBackButtonUnchanged
+      ? <div className={classes.BottomBar}>
+          <button className={classes.BackButton} onClick={() => {this.props.back(); this.props.showLng()}}>
+            <img src={leftArrow} alt="leftArrow" className={classes.LeftArrow} />
+            <h1 className={classes.BackButtonText}>Back</h1>
+          </button>
+          </div>
+      :null}
 
         {form}
           {this.state.notSearching
@@ -206,9 +223,10 @@ class SearchForm extends Component {
             }
               {this.state.showInfoBars
               ? this.state.books.map(book => {
-                return <div key={book[1].bibid}>
+                return null
+                {/*<div key={book[1].bibid}>
                   <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[1].bibid)}}/>
-                  </div>
+                  </div>*/}
               })
               : <div>
                 {this.state.guidanceStarted === false

@@ -4,7 +4,7 @@ import Aux from '../../hoc/Aux';
 
 import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 import classes from './FoodOrToilet.module.css';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 const toilet = (props) => {
 

@@ -12,25 +12,58 @@ import UpArrow from '../../assets/images/Icon-Arrow-Up.svg';
 import HomeImage from '../../assets/images/Icon-Home.svg';
 import BookLogo from '../../assets/images/Icon-Book.svg';
 
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class Categories extends Component {
   state = {
-
-    categories: [
-      {id: '469' , title: 'Traveling'},
-      {id: '691.1', title: 'Cooking'},
-      {id: '790', title: 'Arts'},
-      {id: '850', title: 'Languages'},
-      {id: '990', title: 'Autobiographies'},
-      {id: '900', title: 'History'}
+    mainCategories: [
+      {mainCategory: 'nonFiction', subCategories: [
+        {id: '100' , title: 'Philosophy, Psychology, Religion'},
+        {id: '300', title: 'Society'},
+        {id: '400', title: 'Traveling & Geography'},
+        {id: '500', title: 'Natural Sciences'},
+        {id: '610', title: 'Medicine'},
+        {id: '620', title: 'Tech & Industry'},
+        {id: '653', title: 'Gardening & Pets'},
+        {id: '683', title: 'Handicrafts'},
+        {id: '690', title: 'Cookbooks'},
+        {id: '700', title: 'Architecture & Art'},
+        {id: '790', title: 'Sports & Fitness'},
+        {id: '800', title: 'Literature Studies'},
+        {id: '850', title: 'Languages'},
+        {id: '884', title: 'Learn Finnish'},
+        {id: '900', title: 'History'},
+        {id: '990', title: 'Biographies'}
+      ] },
+      {mainCategory: 'fiction', subCategories: [
+        {id: '', title: 'Voice Books'},
+        {id: '', title: 'Plain language books'},
+        {id: '1', title: 'Poetry & Plays'},
+        {id: '1.4', title: 'Thrillers'},
+        {id: '1.4', title: 'Comedy'},
+        {id: '1.4', title: 'Scifi & Fantasy'},
+        {id: '1.4', title: 'Horror'},
+        {id: '', title: ''},
+        {id: '', title: ''},
+        {id: '', title: ''},
+        {id: '', title: ''}
+      ] },
+      {mainCategory: 'music', subCategories: [
+        {id: '780', title: 'Biographies'},
+        {id: '780', title: 'Sheet Music'},
+        {id: '780', title: 'Music Theory'}
+      ] }
     ],
+
+    categories: [],
     showCategories: true,
     chosenCategory: undefined,
     startGuidance: false,
     searchingCategory: '',
     arrowMessage: '',
-    arrowDirection: ''
+    arrowDirection: '',
+    subCategories: [],
+    showMainCategories: true
   }
 
   categoryPickedHandler = (category) => {
@@ -120,33 +153,59 @@ class Categories extends Component {
       })
   }
 
+  addSubCategoriesHandler = (subcategories) => {
+    this.setState({showMainCategories: false});
+    this.setState({subCategories: subcategories });
+    console.log("SUBCATEGORIES ARE",this.state.subCategories);
+  }
+
   render() {
     const { t } = this.props
 
     if (this.state.showCategories) {
 
       return (
-        <>
+        <Aux>
         <div className={classes.categoryHeader}>
           <img src={BookLogo} alt="Book" className={classes.BookLogo}/>
           <h1 className={classes.h1}>{t('bookMenu.findCategory')}</h1>
         </div>
+
         <div className={classes.categoriesArranged}>
-          {this.state.categories.map( category => {
+        {this.state.showMainCategories
+        ? <div>
+          {this.state.mainCategories.map( maincategory => {
+              return (
+                <button className={classes.MainCategories}
+                onClick={() => this.addSubCategoriesHandler(Object.values(maincategory.subCategories))}>
+                {maincategory.mainCategory}
+                {console.log(Object.entries(maincategory.subCategories))}
+                </button>
+              )
+            })
+          }
+          </div>
+        : <div>
+          {this.state.subCategories.map( category => {
             return (
-              <Category
-                key={category.id}
-                id={category.id}
-                className={classes.Categories}
-                title={t(`categories.${category.title}`)}
-                onClick={this.categoryPickedHandler}
-                clicked={this.props.clicked}
-              />
-            )
-          })
+              <Aux>
+              <div>{console.log(category.title)}</div>
+                <Category
+                  key={category.id}
+                  id={category.id}
+                  className={classes.Categories}
+                  title={t(`categories.${category.title}`)}
+                  onClick={this.categoryPickedHandler}
+                  clicked={this.props.clicked}
+                  />
+                </Aux>
+                )
+              })
+            }
+          </div>
         }
         </div>
-      </>
+        </Aux>
       );
     }
     else {

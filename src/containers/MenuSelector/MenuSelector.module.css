@@ -88,6 +88,7 @@
   width: 1410px;
   border-radius: 10px;
   background-color: #7FEBD3;
+  border: 0px;
 }
 
 .ToiletButton {
@@ -98,6 +99,7 @@
   width: 1410px;
   border-radius: 10px;
   background-color: #F4D9E5;
+  border: 0px;
 }
 
 .CafeButton {
@@ -108,6 +110,7 @@
   width: 1410px;
   border-radius: 10px;
   background-color: #FFEA80;
+  border: 0px;
 }
 
 .BookLogo {

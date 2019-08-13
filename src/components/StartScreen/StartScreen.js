@@ -30,7 +30,7 @@ const startScreen = (props) => {
           <Button btnType="Start" className={classes.StartButton} clicked={props.updateStartHandler}>{t('startMenu.startButton')}
           </Button>
         </div>
-        <img src={StartLogo} className={classes.StartLogo}/>
+        <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
       </Aux>
   );
 };

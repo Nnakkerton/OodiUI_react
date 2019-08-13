@@ -1,0 +1,50 @@
+.InfoButton {
+  position: relative;
+  height: 139px;
+  width: 1520px;
+  border-radius: 10px;
+  border: 0px;
+  background-color: #F3F5F6;
+  margin: 10px;
+}
+
+.Title {
+  position: absolute;
+  top: 15px;
+  left: 39px;
+  width: 879px;
+  height: 51px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 51px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Author {
+  position: absolute;
+  top: 79px;
+  left: 39px;
+  width: 800px;
+  height: 39px;
+  text-align: left;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 30px;
+  line-height: 39px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.SmallArrow {
+  position: absolute;
+  top: 17px;
+  left: 1400px;
+  height: 105px;
+  width: 105px;
+}

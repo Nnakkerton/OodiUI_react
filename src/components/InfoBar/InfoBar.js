@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
-import Button from '../Button/Button';
+//import Button from '../Button/Button';
 import Aux from '../../hoc/Aux';
 import classes from './InfoBar.module.css';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
+
+import SmallArrow from '../../assets/images/Icon-ArrowShort-Right.svg';
 
 class InfoBar extends Component {
   state = {
@@ -15,7 +16,7 @@ class InfoBar extends Component {
   sendSelectedBookHandler = () => {
     this.setState({notSearching: false});
     this.setState({askGuidance: true});
-    
+
   }
 
   render() {
@@ -25,13 +26,18 @@ class InfoBar extends Component {
       <div>
         {this.state.askGuidance === false
           ? <Aux>
-              <div>
-              {t('bookSearch.title')} <strong>{this.props.title}</strong><br />
-              {t('bookSearch.author')} <strong>{this.props.author}</strong>
-              </div>
-              <Button clicked={() => {this.sendSelectedBookHandler(); this.props.clicked()}}>{this.props.title}</Button>
+              <button onClick={() => console.log("you clicked a button")} className={classes.InfoButton}>
+                <span className={classes.Title}>
+                  <strong>{this.props.title}</strong>
+                </span>
+                <span className={classes.Author}>
+                  <strong>{this.props.author}</strong>
+                </span>
+                
+                <img src={SmallArrow} alt="smallArrow" className={classes.SmallArrow}/>
+              </button>
             </Aux>
-          :  <div>{t('bookSearch.startGuidance')} {this.props.title}</div>
+          :  null
           }
       </div>
     )

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import Layout from './components/Layout/Layout';
 import MenuSelector from './containers/MenuSelector/MenuSelector';
-import Button from './components/Button/Button';
-import { withTranslation, Trans } from 'react-i18next';
+//import Button from './components/Button/Button';
+import { withTranslation } from 'react-i18next';
 import classes from './App.module.css';
 //import MenuSelector from './containers/MenuBuilder/MenuSelector/MenuSelector';
 
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   render() {
-    const { t, i18n } = this.props;
+    const { i18n } = this.props;
     console.log("i18n has", i18n);
 
     return (

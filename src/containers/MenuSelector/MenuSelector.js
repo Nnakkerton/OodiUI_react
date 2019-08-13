@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Button from '../../components/Button/Button';
+//import Button from '../../components/Button/Button';
 import Categories from '../../components/Categories/Categories';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import FoodOrToilet from '../../components/FoodOrToilet/FoodOrToilet';
@@ -13,7 +13,7 @@ import WCLogo from '../../assets/images/Icon-WC.svg';
 import RightArrow from '../../assets/images/Icon-ArrowShort-Right.svg';
 
 import classes from './MenuSelector.module.css';
-import { withTranslation, Trans } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class MenuSelector extends Component {
   state = {
@@ -93,8 +93,8 @@ class MenuSelector extends Component {
   }
 
   showMainHideBookSearchHandler = () => {
+    this.setState({showSearch: false})
     this.setState({menuView: true});
-    this.setState({showSearchForm: false});
   }
 
   /*<div className={classes.OodiBox}>
@@ -118,7 +118,7 @@ class MenuSelector extends Component {
               clicked={this.updateToBookSearchHandler}
               showCategories={this.showCategoriesHandler}
               backToStart={this.backToStartFromEverythingHandler}
-              back={this.showMainHideFoodOrToiletHandler}
+              back={this.showMainHideBookSearchHandler}
               showLng={this.props.showLng}/>
             : null}
           </div>
