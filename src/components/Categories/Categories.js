@@ -240,7 +240,7 @@ class Categories extends Component {
             {this.state.startGuidance === false
               ? <Aux>
                 <h2>{this.state.chosenCategory.title} section ({this.state.chosenCategory.id})</h2>
-                  <h1 className={classes.isGuidanceRequired}>{t('categorySearch.h1')} <strong>{Object.entries(this.state.chosenCategory)[1][1]} section</strong></h1>
+                  <h1 className={classes.isGuidanceRequired}>{t('categorySearch.h1')}</h1>
                   <Button btnType="No" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
                   <Button btnType="Proceed" clicked={this.goToCategory}>{t('button.proceed')}</Button>
                 </Aux>
