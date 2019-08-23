@@ -43,8 +43,7 @@
   },
   "categorySearch": {
     "h1": "Vill du vägledas till kategorin:",
-    "chosenQuestion": "Ta dig till",
-    "section": "avsnittet."
+    "section": "sektion"
 
   },
   "arrows": {
@@ -86,12 +85,15 @@
     "Music Theory": "Musikteori"
   },
   "arrowMessage": {
+    "We have arrived!": "Vi är framme!",
     "Follow me, please!": "Följ efter mig tack!",
-    "Look to your left!": "Se till vänster!",
-    "Look to your right!": "Se till höger!",
-    "Look to your both sides!": "Se till båda sidorna",
-    "Bye bye! I'm going back to the starting point!": "Hejdå! Jag går tillbaka till utgångspunkten."
+    "Bye bye! I'm going back to the starting point!": "Hejdå!",
+    "subMsg": "Jag går tillbaka till utgångspunkten."
   },
-
+  "arrowSubMessage": {
+    "Left": "Please check the shelf on the left.",
+    "Right": "Please check the shelf on the right.",
+    "Both": "Please check the shelves on your both sides."
+  },
   "notification": "Vi är framme!"
 }

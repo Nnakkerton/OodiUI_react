@@ -42,8 +42,7 @@
   },
   "categorySearch": {
     "h1": "Would you like me to bring you there?",
-    "chosenQuestion": "Bringing you to the",
-    "section": "section."
+    "section": "section"
   },
   "arrows": {
   },
@@ -84,12 +83,15 @@
 
   },
   "arrowMessage": {
+    "We have arrived!": "We have arrived!",
     "Follow me, please!": "Follow me, please!",
-    "Look to your left!": "Please check the shelf on the left.",
-    "Look to your right!": "Look to your right!",
-    "Look to your both sides!": "Look to your both sides",
-    "Bye bye! I'm going back to the starting point!": "Bye bye! I'm going back to the starting point."
-
+    "Bye bye! I'm going back to the starting point!": "Bye bye!",
+    "subMsg": "I'm going back to the starting point."
+  },
+  "arrowSubMessage": {
+    "Left": "Please check the shelf on the left.",
+    "Right": "Please check the shelf on the right.",
+    "Both": "Please check the shelves on your both sides."
   },
   "notification": "We have arrived!"
 }

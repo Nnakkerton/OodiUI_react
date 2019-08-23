@@ -94,9 +94,9 @@ function SearchBar(props) {
         ))}
       </div>
       : null}
-      <div className={classes.BottomBar}>
+      <div>
         {bookResults
-          ?<div>
+          ?<div className={classes.BottomBar}>
           <button className={classes.BackButton} onClick={() => {setShowResults(false); props.showCategories(); props.changeBackButton(); setBookResults(false)}}>
               <img src={LeftArrow} alt="leftArrow" className={classes.LeftArrow} />
               <h1 className={classes.BackButtonText}>Back</h1>

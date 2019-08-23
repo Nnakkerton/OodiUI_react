@@ -43,8 +43,7 @@
   },
   "categorySearch": {
     "h1": "Haluatko, että vien sinut perille?",
-    "chosenQuestion": "Vien sinut osaston",
-    "section": "luokse."
+    "section": ""
   },
   "arrows": {
   },
@@ -84,11 +83,16 @@
     "Music Theory": "Teoria"
   },
   "arrowMessage": {
+    "We have arrived!": "Olemme perillä!",
     "Follow me, please!": "Seuraa minua!",
-    "Look to your left!": "Katso vasemalle puolelle!",
-    "Look to your right!": "Katso oikealle puolelle!",
-    "Look to your both sides!": "Katso kummaltakin puolelta",
-    "Bye bye! I'm going back to the starting point!": "Hei hei, menen takaisin kotipisteeseeni."
+    "Bye bye! I'm going back to the starting point!": "Hei hei!",
+    "subMsg": "Menen takaisin kotipisteeseeni."
   },
+  "arrowSubMessage": {
+    "Left": "Ole hyvä ja tarkista vasen hylly.",
+    "Right": "Ole hyvä ja tarkista oikea hylly.",
+    "Both": "Ole hyvä ja tarkista kummankin puolen hyllyt."
+  },
+
   "notification": "Olemme perillä!"
 }

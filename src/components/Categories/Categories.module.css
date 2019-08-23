@@ -126,7 +126,7 @@
 
 .GuidanceSubMsg {
   position: fixed;
-  top: 516px;
+  top: 425px;
   left: 145px;
   height: 64px;
   width: 1293px;
@@ -174,15 +174,31 @@
 
 .ArrowIcon {
   position: fixed;
-  top: 672px;
+  top: 600px;
   left: 708px;
+  height: 194px;
+  width: 185px;
+}
+
+.LeftArrow2 {
+  position: fixed;
+  top: 600px;
+  left: 608px;
+  height: 194px;
+  width: 185px;
+}
+
+.RightArrow {
+  position: fixed;
+  top: 600px;
+  left: 808px;
   height: 194px;
   width: 185px;
 }
 
 .IconForHome {
   position: fixed;
-  top: 500px;
+  top: 450px;
   left: 685px;
   height: 210px;
   width: 210px;
@@ -215,14 +231,37 @@
 
 .isGuidanceRequired {
   position: fixed;
-  top: 150px;
-  left: 0px;
-  height: 154px;
-  width: 1600px;
+  top: 700px;
+  left: 100px;
+  height: 107px;
+  width: 1400px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 65px;
+  font-weight: bold;
+  line-height: 107px;
+  text-align: center;
+}
+
+.TitleDisplay {
+  position: fixed;
+  top: 45px;
+  left: 81px;
+  height: 64px;
+  width: 1293px;
   color: #000000;
   font-family: "Helsinki Grotesk";
-  font-size: 80px;
+  font-size: 50px;
   font-weight: bold;
-  line-height: 154px;
-  text-align: center;
+  line-height: 64px;
+  text-align: left;
+}
+
+.MapBox {
+  position: fixed;
+  border: 1px solid;
+  top: 130px;
+  left: 82px;
+  height: 598px;
+  width: 1457px;
 }

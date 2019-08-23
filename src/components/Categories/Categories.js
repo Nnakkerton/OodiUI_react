@@ -110,23 +110,26 @@ class Categories extends Component {
         else {
           if (response.data.data === 'l') {
             this.setState({arrowDirection: LeftArrow});
-            this.setState({arrowMessage: "Look to your left!"});
-            this.setState({arrowSubMessage: "Please check the shelf on the left."})
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "Left"})
             console.log("received left arrow");
           }
           else if (response.data.data === 'r') {
             this.setState({arrowDirection: RightArrow});
-            this.setState({arrowMessage: "Look to your right!"});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "Right"});
             console.log("received right arrow");
           }
           else if (response.data.data === 'lr') {
             this.setState({arrowDirection: LeftArrow});
-            this.setState({arrowMessage: "Look to your both sides!"});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "Both"});
             console.log("received leftright arrow");
           }
           else {
             this.setState({arrowDirection: UpArrow});
             this.setState({arrowMessage: "Follow me, please!"});
+            this.setState({arrowSubMessage:"Section"});
             console.log("no matching arrow");
           }
           setTimeout(this.startGuidanceHandler, 2000)
@@ -239,7 +242,8 @@ class Categories extends Component {
           <Aux>
             {this.state.startGuidance === false
               ? <Aux>
-                <h2>{this.state.chosenCategory.title} section ({this.state.chosenCategory.id})</h2>
+                <h2 className={classes.TitleDisplay}>{this.state.chosenCategory.title} {t('categorySearch.section')} ({this.state.chosenCategory.id}):</h2>
+                  <h1 className={classes.MapBox}>MAP HERE</h1>
                   <h1 className={classes.isGuidanceRequired}>{t('categorySearch.h1')}</h1>
                   <Button btnType="No" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
                   <Button btnType="Proceed" clicked={this.goToCategory}>{t('button.proceed')}</Button>
@@ -254,16 +258,26 @@ class Categories extends Component {
                       <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
                       <div className={classes.GuidanceContainer}>
                         <h1 className={classes.GuidanceMsgForHome}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
-                        <h2 className={classes.GuidanceSubMsgForHome}>{t('categorySearch.chosenQuestion')}</h2>
+                        <h2 className={classes.GuidanceSubMsgForHome}>{t('arrowMessage.subMsg')}</h2>
                         <img className={classes.IconForHome} src={this.state.arrowDirection} alt="icon"/>
                       </div>
                     </Aux>
                   : <Aux>
                       <h1 className={classes.GuidanceMsg}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+                      <h2 className={classes.GuidanceSubMsg}>{t(`arrowSubMessage.${this.state.arrowSubMessage}`)}</h2>
 
                       {this.state.arrowDirection === ''
                         ? null
-                        : <img className={classes.ArrowIcon} src={this.state.arrowDirection} alt="icon"/>}
+                        :
+                        <div>
+                        {this.state.arrowSubMessage === "Both"
+                          ? <Aux>
+                              <img className={classes.LeftArrow2} src={LeftArrow} />
+                              <img className={classes.RightArrow} src={RightArrow} />
+                            </Aux>
+                          : <img className={classes.ArrowIcon} src={this.state.arrowDirection} alt="icon"/>}
+                        </div>
+                        }
                         </Aux>
                 }
               </div>

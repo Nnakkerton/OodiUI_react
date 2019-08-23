@@ -121,17 +121,17 @@ class SearchForm extends Component {
       else {
         if (response.data.data === 'l') {
           this.setState({arrowDirection: leftArrow});
-          this.setState({arrowMessage: "Look to your left!"});
+          this.setState({arrowSubMessage: "Left"});
           console.log("received left arrow");
         }
         else if (response.data.data === 'r') {
           this.setState({arrowDirection: rightArrow});
-          this.setState({arrowMessage: "Look to your right!"});
+          this.setState({arrowSubMessage: "Right"});
           console.log("received right arrow");
         }
         else if (response.data.data === 'lr') {
           this.setState({arrowDirection: leftArrow});
-          this.setState({arrowMessage: "Look to your both sides!"});
+          this.setState({arrowSubMessage: "Both"});
           console.log("received leftright arrow");
         }
         else {
@@ -192,7 +192,7 @@ class SearchForm extends Component {
               <img src={Oodi} className={classes.rectangle} alt="Oodi" />
             </div>
             <div>
-              <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+              <h1>{t(`arrowSubMessage.${this.state.arrowSubMessage}`)}</h1>
               <img src={this.state.arrowDirection} alt="arrow"/>
             </div>
               </Aux>
