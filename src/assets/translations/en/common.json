@@ -21,11 +21,18 @@
   "toiletOrFoodScreen": {
     "nearestWC": "The nearest WC:",
     "cafeIs": "The cafe is here:",
-    "wouldYouLike": "Would you like me to bring you there?"
+    "wouldYouLike": "Would you like me to bring you there?",
+    "no": "No thanks.",
+    "yes": "Yes, please!"
   },
   "bookMenu": {
     "findBookPlaceholder": "Search for books...",
-    "findCategory": "Book Categories:"
+    "findCategory": {
+      "Book Categories": "Book Categories",
+      "Non-fiction" : "Non-fiction",
+      "Fiction": "Fiction",
+      "Music": "Music"
+      }
   },
   "bookSearch": {
     "available": "Available books with the keyword:",
@@ -34,7 +41,9 @@
     "author": "Author:"
   },
   "categorySearch": {
-    "h1": "Would you like to be guided to the category:"
+    "h1": "Would you like me to bring you there?",
+    "chosenQuestion": "Bringing you to the",
+    "section": "section."
   },
   "arrows": {
   },
@@ -43,20 +52,44 @@
     "proceed": "Proceed"
   },
   "categories": {
-    "Traveling": "Traveling",
-    "Cooking": "Cooking",
-    "Arts": "Arts",
+    "Geography & Traveling": "Geography and Traveling",
+    "Cookbooks": "Cookbooks",
+    "Architecture & Art": "Architecture and Art",
     "Languages": "Languages",
-    "Autobiographies": "Autobiographies",
-    "History": "History"
+    "Biographies": "Biographies",
+    "History": "History",
+    "Philosophy, Psychology, Religion": "Philosophy, Psychology and Religion",
+    "Society": "Society",
+    "Natural Sciences": "Natural Sciences",
+    "Medicine": "Medicine",
+    "Tech & Industry": "Tech and Industry",
+    "Gardening & Pets": "Gardening and Pets",
+    "Handicrafts": "Handicrafts",
+    "Sports & Fitness": "Sports and Fitness",
+    "Literature Studies": "Literature Studies",
+    "Learn Finnish": "Learn Finnish",
+    "Audio Books": "Audio Books",
+    "Plain Language Books": "Plain Language Books",
+    "Poetry & Plays": "Poetry and Plays",
+    "Thriller": "Thriller",
+    "Comedy": "Comedy",
+    "Scifi & Fantasy": "Scifi and Fantasy",
+    "Horror": "Horror",
+    "General": "General",
+    "Swedish": "Swedish",
+    "English": "English",
+    "Other Languages": "Other Languages",
+    "Sheet Music": "Sheet Music",
+    "Music Theory": "Music Theory"
+
   },
   "arrowMessage": {
-    "Let's go!": "Let's go!",
-    "Look to your left!": "Look to your left!",
+    "Follow me, please!": "Follow me, please!",
+    "Look to your left!": "Please check the shelf on the left.",
     "Look to your right!": "Look to your right!",
     "Look to your both sides!": "Look to your both sides",
     "Bye bye! I'm going back to the starting point!": "Bye bye! I'm going back to the starting point."
 
-  }
-
+  },
+  "notification": "We have arrived!"
 }

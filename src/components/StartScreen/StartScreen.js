@@ -6,7 +6,6 @@ import StartLogo from '../../assets/images/Border-Image.png';
 import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 
 import classes from './StartScreen.module.css';
-
 import { withTranslation } from 'react-i18next';
 
 const startScreen = (props) => {

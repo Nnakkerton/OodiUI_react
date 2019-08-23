@@ -21,11 +21,19 @@
   "toiletOrFoodScreen": {
     "nearestWC": "Lähin WC on:",
     "cafeIs": "Kahvila on:",
-    "wouldYouLike": "Haluatko, että vien sinut perille asti?"
+    "wouldYouLike": "Haluatko, että vien sinut perille asti?",
+    "no": "Ei, kiitos.",
+    "yes": "Kyllä, kiitos!"
   },
   "bookMenu": {
     "findBookPlaceholder": "Etsi kirjoja...",
-    "findCategory": "Kategoriat:"
+    "findCategory": {
+      "Book Categories": "Kategoriat",
+      "Non-fiction" : "Tietokirjallisuus",
+      "Fiction": "Fiktio",
+      "Music": "Musiikki"
+      }
+
   },
   "bookSearch": {
     "available": "Löydettiin seuraavat kirjat hyllystä hakusanalla:",
@@ -34,7 +42,9 @@
     "author": "Tekijä:"
   },
   "categorySearch": {
-    "h1": "Haluatko opastuksen seuraavan kategorian luokse:"
+    "h1": "Haluatko, että vien sinut perille?",
+    "chosenQuestion": "Vien sinut osaston",
+    "section": "luokse."
   },
   "arrows": {
   },
@@ -43,18 +53,42 @@
     "proceed": "Opasta"
   },
   "categories": {
-    "Traveling": "Matkailu",
-    "Cooking": "Ruoanlaitto",
-    "Arts": "Taide",
+    "Geography & Traveling": "Matkailu ja maantiede",
+    "Cookbooks": "Keittokirjat",
+    "Architecture & Art": "Arkkitehtuuri ja taide",
     "Languages": "Kielet",
-    "Autobiographies": "Elämäkerrat",
-    "History": "Historia"
+    "Biographies": "Elämäkerrat",
+    "History": "Historia",
+    "Philosophy, Psychology, Religion": "Filosofia, psykologia ja uskonnot",
+    "Society": "Yhteiskunta",
+    "Natural Sciences": "Luonnontieteet",
+    "Medicine": "Lääketiede",
+    "Tech & Industry": "Tekniikka ja teollisuus",
+    "Gardening & Pets": "Puutarhanhoito ja lemmikit",
+    "Handicrafts": "Kädentaidot",
+    "Sports & Fitness": "Liikunta ja urheilu",
+    "Literature Studies": "Kirjallisuustiede",
+    "Learn Finnish": "Opi suomea",
+    "Audio Books": "Äänikirjat",
+    "Plain Language Books": "Selkokirjat",
+    "Poetry & Plays": "Runot ja näytelmät",
+    "Thriller": "Jännitys",
+    "Comedy": "Viihde",
+    "Scifi & Fantasy": "Scifi ja fantasia",
+    "Horror": "Kauhu",
+    "General": "Yleinen",
+    "Swedish": "Ruotsi",
+    "English": "Englanti",
+    "Other Languages": "Muut kielet",
+    "Sheet Music": "Nuotit",
+    "Music Theory": "Teoria"
   },
   "arrowMessage": {
-    "Let's go!": "Seuraa minua!",
+    "Follow me, please!": "Seuraa minua!",
     "Look to your left!": "Katso vasemalle puolelle!",
     "Look to your right!": "Katso oikealle puolelle!",
     "Look to your both sides!": "Katso kummaltakin puolelta",
     "Bye bye! I'm going back to the starting point!": "Hei hei, menen takaisin kotipisteeseeni."
-  }
+  },
+  "notification": "Olemme perillä!"
 }

@@ -1,10 +1,12 @@
 .Category {
   position: relative;
   top: 0px;
-  left: 100px;
+  left: 0px;
 	height: 97px;
-	width: 349px;
-  margin: 30px;
+	width: 443px;
+  margin-left: 10px;
+  margin-right: 55px;
+  margin-bottom: 40px;
   background-color: white;
 	border: 4.2px solid #000000;
   font-size: 35px;

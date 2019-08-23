@@ -14,8 +14,21 @@ function SearchBar(props) {
   const [bookList, setBookList] = useState([]);
   const [bookResults, setBookResults] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [askGuidance, setAskGuidance] = useState(false);
+  const [showForm, setShowForm] = useState(true);
+  const [chosenTitle, setChosenTitle] = useState('');
+  const [bookId, setBookId] = useState('');
 
   const { t } = props
+
+  const changeResultsToFalse = () => {
+    setShowResults(false);
+  }
+
+  const getChosenBookHandler = (title, id) => {
+    setChosenTitle(title);
+    setBookId(id);
+  }
 
   const sendDataHandler = (event) => {
     event.preventDefault();
@@ -43,37 +56,51 @@ function SearchBar(props) {
   }
   return (
     <Aux>
-      <form onSubmit={sendDataHandler}>
-        <input
-          type="text"
-          className={classes.SearchBar}
-          placeholder={t('bookMenu.findBookPlaceholder')}
-          onChange={event => setSearchTerm(event.target.value)}
-          values={searchTerm}
-          />
-        <div className={classes.Button}>
-          <button type="submit" onClick={() => {props.clicked(); setBookResults(true) }} />
-        </div>
-      </form>
+    {showForm
+      ? <form onSubmit={sendDataHandler}>
+          <input
+            type="text"
+            className={classes.SearchBar}
+            placeholder={t('bookMenu.findBookPlaceholder')}
+            onChange={event => setSearchTerm(event.target.value)}
+            values={searchTerm}
+            />
+          <div className={classes.Button}>
+            <button type="submit" onClick={() => {props.clicked(); setBookResults(true) }} />
+          </div>
+        </form>
+      : <Aux>
+          <button className={classes.No}
+            onClick={() => {setShowForm(true);
+              setShowResults(true);
+              setBookResults(true);
+              props.placeWaveUp()}}>
+              {t('toiletOrFoodScreen.no')}
+          </button>
+          <button className={classes.Proceed} onClick={() => {props.startGuidance(bookId)}}>{t('toiletOrFoodScreen.yes')}</button>
+          <div className={classes.MessageContainer}>
+            <h1 className={classes.ConfirmationMessage}>{t('bookSearch.startGuidance')}
+            {chosenTitle}</h1>
+          </div>
+        </Aux>}
       {showResults
       ? <div className={classes.Container}>
           {bookList.map(book => (
             <div key={book[1].bibid}>
-              <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} />
-              {/*<InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[1].bibid)}}/>*/}
+              <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid}
+              chosenBook={getChosenBookHandler} showCategories={props.showCategories}
+              clicked={() => {changeResultsToFalse(); props.placeWaveDown(); setAskGuidance(true); setShowForm(false); setBookResults(false)}}/>
             </div>
         ))}
       </div>
       : null}
       <div className={classes.BottomBar}>
-      {showResults
-        ?  <button className={classes.BackButton} onClick={() => {setShowResults(false); props.showCategories(); props.changeBackButton()}}>
-            <img src={LeftArrow} alt="leftArrow" className={classes.LeftArrow} />
-            <h1 className={classes.BackButtonText}>Back</h1>
-          </button>
-        : null}
         {bookResults
           ?<div>
+          <button className={classes.BackButton} onClick={() => {setShowResults(false); props.showCategories(); props.changeBackButton(); setBookResults(false)}}>
+              <img src={LeftArrow} alt="leftArrow" className={classes.LeftArrow} />
+              <h1 className={classes.BackButtonText}>Back</h1>
+            </button>
             <p className={classes.ResultsNumber}>{bookList.length} Results</p>
             </div>
           : null}

@@ -6,21 +6,23 @@ import classes from './Categories.module.css';
 import Aux from '../../hoc/Aux';
 import Button from '../Button/Button';
 
-import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
+import LeftArrow from '../../assets/images/Icon-Arrow-Left.svg';
 import RightArrow from '../../assets/images/Icon-Arrow-Right.svg';
 import UpArrow from '../../assets/images/Icon-Arrow-Up.svg';
 import HomeImage from '../../assets/images/Icon-Home.svg';
 import BookLogo from '../../assets/images/Icon-Book.svg';
+import StartLogo from '../../assets/images/Border-Image.png';
+import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 
 import { withTranslation } from 'react-i18next';
 
 class Categories extends Component {
   state = {
     mainCategories: [
-      {mainCategory: 'nonFiction', subCategories: [
+      {mainCategory: 'Non-fiction', subCategories: [
         {id: '100' , title: 'Philosophy, Psychology, Religion'},
         {id: '300', title: 'Society'},
-        {id: '400', title: 'Traveling & Geography'},
+        {id: '400', title: 'Geography & Traveling'},
         {id: '500', title: 'Natural Sciences'},
         {id: '610', title: 'Medicine'},
         {id: '620', title: 'Tech & Industry'},
@@ -35,35 +37,37 @@ class Categories extends Component {
         {id: '900', title: 'History'},
         {id: '990', title: 'Biographies'}
       ] },
-      {mainCategory: 'fiction', subCategories: [
-        {id: '', title: 'Voice Books'},
-        {id: '', title: 'Plain language books'},
+      {mainCategory: 'Fiction', subCategories: [
+        {id: '', title: 'Audio Books'},
+        {id: '', title: 'Plain Language Books'},
         {id: '1', title: 'Poetry & Plays'},
-        {id: '1.4', title: 'Thrillers'},
+        {id: '1.4', title: 'Thriller'},
         {id: '1.4', title: 'Comedy'},
         {id: '1.4', title: 'Scifi & Fantasy'},
         {id: '1.4', title: 'Horror'},
-        {id: '', title: ''},
-        {id: '', title: ''},
-        {id: '', title: ''},
-        {id: '', title: ''}
+        {id: '', title: 'General'},
+        {id: '2', title: 'Swedish'},
+        {id: '4', title: 'English'},
+        {id: '', title: 'Other Languages'}
       ] },
-      {mainCategory: 'music', subCategories: [
+      {mainCategory: 'Music', subCategories: [
         {id: '780', title: 'Biographies'},
         {id: '780', title: 'Sheet Music'},
         {id: '780', title: 'Music Theory'}
       ] }
     ],
-
     categories: [],
     showCategories: true,
     chosenCategory: undefined,
     startGuidance: false,
     searchingCategory: '',
     arrowMessage: '',
+    arrowSubMessage: '',
     arrowDirection: '',
     subCategories: [],
-    showMainCategories: true
+    showMainCategories: true,
+    showSubCategories: false,
+    categoriesTitleText: "Book Categories"
   }
 
   categoryPickedHandler = (category) => {
@@ -76,7 +80,8 @@ class Categories extends Component {
   }
 
   goToCategory = () => {
-    let chosenCategory = Object.entries(this.state.chosenCategory)[0][1];
+    console.log("check what category is", this.state.chosenCategory.id);
+    let chosenCategory = this.state.chosenCategory.id;
     console.log("chosenCategory is:", chosenCategory);
     this.setState({startGuidance: true});
     console.log("goToCategory clicked");
@@ -104,8 +109,9 @@ class Categories extends Component {
         }
         else {
           if (response.data.data === 'l') {
-            this.setState({arrowDirection: leftArrow});
+            this.setState({arrowDirection: LeftArrow});
             this.setState({arrowMessage: "Look to your left!"});
+            this.setState({arrowSubMessage: "Please check the shelf on the left."})
             console.log("received left arrow");
           }
           else if (response.data.data === 'r') {
@@ -114,13 +120,13 @@ class Categories extends Component {
             console.log("received right arrow");
           }
           else if (response.data.data === 'lr') {
-            this.setState({arrowDirection: leftArrow});
+            this.setState({arrowDirection: LeftArrow});
             this.setState({arrowMessage: "Look to your both sides!"});
             console.log("received leftright arrow");
           }
           else {
             this.setState({arrowDirection: UpArrow});
-            this.setState({arrowMessage: "Let's go!"});
+            this.setState({arrowMessage: "Follow me, please!"});
             console.log("no matching arrow");
           }
           setTimeout(this.startGuidanceHandler, 2000)
@@ -159,6 +165,15 @@ class Categories extends Component {
     console.log("SUBCATEGORIES ARE",this.state.subCategories);
   }
 
+  changeMainCategoriesToTrueHandler = () => {
+    this.setState({showMainCategories: true})
+    this.setState({showSubCategories: false})
+  }
+
+  showSubCategoriesHandler = () => {
+    this.setState({showSubCategories: true});
+  }
+
   render() {
     const { t } = this.props
 
@@ -166,10 +181,20 @@ class Categories extends Component {
 
       return (
         <Aux>
-        <div className={classes.categoryHeader}>
-          <img src={BookLogo} alt="Book" className={classes.BookLogo}/>
-          <h1 className={classes.h1}>{t('bookMenu.findCategory')}</h1>
-        </div>
+          <div className={classes.categoryHeader}>
+            <img src={BookLogo} alt="Book" className={classes.BookLogo}/>
+            <h1 className={classes.h1}>{t(`bookMenu.findCategory.${this.state.categoriesTitleText}`)}</h1>
+          </div>
+          <div>
+          {this.state.showMainCategories === false
+            ? <div className={classes.BottomBar}>
+                <button className={classes.BackButton} onClick={() => this.changeMainCategoriesToTrueHandler()}>
+                <img src={LeftArrow} alt="LeftArrow" className={classes.LeftArrow} />
+                <h1 className={classes.BackButtonText}>Back</h1>
+              </button>
+              </div>
+            : null}
+          </div>
 
         <div className={classes.categoriesArranged}>
         {this.state.showMainCategories
@@ -177,31 +202,32 @@ class Categories extends Component {
           {this.state.mainCategories.map( maincategory => {
               return (
                 <button className={classes.MainCategories}
-                onClick={() => this.addSubCategoriesHandler(Object.values(maincategory.subCategories))}>
+                onClick={() => {this.addSubCategoriesHandler(Object.values(maincategory.subCategories));      this.showSubCategoriesHandler();
+                this.setState({categoriesTitleText: maincategory.mainCategory})}}>
                 {maincategory.mainCategory}
-                {console.log(Object.entries(maincategory.subCategories))}
                 </button>
               )
             })
           }
           </div>
         : <div>
+          {this.state.showSubCategories
+          ? <div className={classes.categoriesArranged}>
           {this.state.subCategories.map( category => {
-            return (
-              <Aux>
-              <div>{console.log(category.title)}</div>
+              return (
                 <Category
                   key={category.id}
                   id={category.id}
-                  className={classes.Categories}
+                  className={classes.SubCategories}
                   title={t(`categories.${category.title}`)}
                   onClick={this.categoryPickedHandler}
                   clicked={this.props.clicked}
                   />
-                </Aux>
-                )
-              })
+                  )
+                })
             }
+            </div>
+          : null}
           </div>
         }
         </div>
@@ -210,22 +236,56 @@ class Categories extends Component {
     }
     else {
       return (
-          <div>
+          <Aux>
             {this.state.startGuidance === false
               ? <Aux>
-                  <h1>{t('categorySearch.h1')} <strong>{Object.entries(this.state.chosenCategory)[1][1]}</strong></h1>
-                  <Button btnType="Back" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
-                  <Button clicked={this.goToCategory}>{t('button.proceed')}</Button>
+                <h2>{this.state.chosenCategory.title} section ({this.state.chosenCategory.id})</h2>
+                  <h1 className={classes.isGuidanceRequired}>{t('categorySearch.h1')} <strong>{Object.entries(this.state.chosenCategory)[1][1]} section</strong></h1>
+                  <Button btnType="No" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
+                  <Button btnType="Proceed" clicked={this.goToCategory}>{t('button.proceed')}</Button>
                 </Aux>
-              : <div>
-                <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
-                <img src={this.state.arrowDirection} alt="arrow"/>
-                </div>
+              : <Aux>
+                  <div className={classes.OodiBox}>
+                    <img src={Oodi} className={classes.rectangle} alt="Oodi" />
+                  </div>
+                <div>
+                {this.state.arrowMessage === "Bye bye! I'm going back to the starting point!"
+                  ? <Aux>
+                      <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
+                      <div className={classes.GuidanceContainer}>
+                        <h1 className={classes.GuidanceMsgForHome}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+                        <h2 className={classes.GuidanceSubMsgForHome}>{t('categorySearch.chosenQuestion')}</h2>
+                        <img className={classes.IconForHome} src={this.state.arrowDirection} alt="icon"/>
+                      </div>
+                    </Aux>
+                  : <Aux>
+                      <h1 className={classes.GuidanceMsg}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+
+                      {this.state.arrowDirection === ''
+                        ? null
+                        : <img className={classes.ArrowIcon} src={this.state.arrowDirection} alt="icon"/>}
+                        </Aux>
+                }
+              </div>
+              </Aux>
+
+
               }
-          </div>
+          </Aux>
       )
     }
   }
 }
 
 export default withTranslation('common')(Categories);
+
+{/*<Aux>
+<div className={classes.GuidanceContainer}>
+  <h1 className={classes.GuidanceMsg}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+  {this.state.arrowMessage === "Follow me, please!"
+  ? <h2 className={classes.GuidanceSubMsg}>{t('categorySearch.chosenQuestion')} {t(`${this.state.chosenCategory.title}`)}
+    {' '}({t(`${this.state.chosenCategory.id}`)}) {t('categorySearch.section')} </h2>
+    : null}
+  <img className={classes.Arrow} src={this.state.arrowDirection} alt="arrow"/>
+  </div>
+</Aux>*/}

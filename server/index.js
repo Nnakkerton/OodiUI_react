@@ -55,6 +55,12 @@ app.post('/category_guidance', function(req, res) {
   res.json({success: true});
 })
 
+app.post('/food_or_toilet_guidance', function(req, res) {
+  let msg = req.body.msg;
+  console.log("Received the following message", msg);
+  res.json({success: true});
+})
+
 app.get('/guidance', function(req, res) {
   var arrow;
   function read(file, callback) {

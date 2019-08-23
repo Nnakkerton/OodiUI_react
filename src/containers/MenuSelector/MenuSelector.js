@@ -26,7 +26,8 @@ class MenuSelector extends Component {
     menuView: false,
     showFoodToilet: false,
     showFoodOrToilet: false,
-    msg: ""
+    msg: "",
+    placeWaveUp: true
   }
 
   updateStartHandler = () => {
@@ -84,7 +85,11 @@ class MenuSelector extends Component {
     this.setState({showSearch: false});
     this.setState({showSearchForm: true});
     this.setState({showCategories: true});
+    this.setState({placeWaveUp: true});
+  }
 
+  placeWaveUpHandler = () => {
+    this.setState({placeWaveUp: true});
   }
 
   returnFromMainHandler = () => {
@@ -97,10 +102,6 @@ class MenuSelector extends Component {
     this.setState({menuView: true});
   }
 
-  /*<div className={classes.OodiBox}>
-      <img src={Oodi} alt="Oodi"/>
-      <p className={classes.p}> <strong>Oodi</strong> Helsinki Central Library </p>
-      <button src={Oodi} className={classes.OodiBox}><strong>Oodi</strong>Helsinki Central Library</button>*/
   render () {
     let menu;
     const { t } = this.props
@@ -111,16 +112,23 @@ class MenuSelector extends Component {
           <button onClick={() => {this.backToStartFromEverythingHandler(); this.props.showLng()}} className={classes.OodiBoxBookSearch}>
             <img src={Oodi} className={classes.rectangleBookSearch} alt="Oodi" />
           </button>
-            <span className={classes.IconWaveBooks} />
           <div>
           {this.state.showSearchForm
-            ?<SearchForm
-              clicked={this.updateToBookSearchHandler}
-              showCategories={this.showCategoriesHandler}
-              backToStart={this.backToStartFromEverythingHandler}
-              back={this.showMainHideBookSearchHandler}
-              showLng={this.props.showLng}/>
-            : null}
+            ? <Aux>
+              {this.state.placeWaveUp
+              ? <span className={classes.IconWaveBooks} />
+              : <span className={classes.IconWaveSearchingBooks} />
+            }
+              <SearchForm
+                clicked={this.updateToBookSearchHandler}
+                showCategories={this.showCategoriesHandler}
+                backToStart={() => {this.backToStartFromEverythingHandler(); this.props.showLng()}}
+                back={this.showMainHideBookSearchHandler}
+                showLng={this.props.showLng}
+                placeWaveDown={() => {this.setState({placeWaveUp: false})}}
+                placeWaveUp={this.placeWaveUpHandler}/>
+              </Aux>
+            : <span className={classes.IconWaveSearchingBooks} />}
           </div>
           <div className={classes.Container}>
             {this.state.showCategories
@@ -128,14 +136,15 @@ class MenuSelector extends Component {
                 className={classes.Categories}
                 clicked={this.updateToCategorySearchHandler}
                 search={this.showSearchFormHandler}
-                backToStart={this.backToStartHandler}/>
+                backToStart={() => {this.backToStartFromEverythingHandler(); this.props.showLng()}}
+                back={this.showMainHideBookSearchHandler}/>
               : null}
           </div>
         </Aux>
       );
     }
     else if (this.state.menuView) {
-      //this is the menu for showing books, toilet and cafe
+      //this is the menu for showing books, toilet and cafe options
       menu = (
         <Aux>
           <button onClick={this.returnFromMainHandler} className={classes.OodiBox}>
@@ -150,14 +159,14 @@ class MenuSelector extends Component {
           <img src={RightArrow} alt="arrow" className={classes.Arrow1}/>
           </button>
 
-          <button onClick={() => {this.foodToiletHandler("nearestWC"); this.props.hideLng()}} value="WC" className={classes.ToiletButton} >
+          <button onClick={() => {this.foodToiletHandler("WC"); this.props.hideLng()}} value="WC" className={classes.ToiletButton} >
           <img src={WCLogo} alt="WC" className={classes.WCLogo}/>
           <p className={classes.Text2}><strong>{t('mainMenu.toiletSelector.toilet')}</strong></p>
           <p className={classes.Explanation2}>{t('mainMenu.toiletSelector.toiletText')}</p>
           <img src={RightArrow} alt="arrow" className={classes.Arrow2}/>
           </button>
 
-          <button onClick={() => {this.foodToiletHandler("cafeIs"); this.props.hideLng()}} value="Food" className={classes.CafeButton} >
+          <button onClick={() => {this.foodToiletHandler("cafe"); this.props.hideLng()}} value="Food" className={classes.CafeButton} >
           <img src={CafeLogo} alt="Cafe" className={classes.CafeLogo}/>
           <p className={classes.Text3}><strong>{t('mainMenu.foodSelector.food')}</strong></p>
           <p className={classes.Explanation3}>{t('mainMenu.foodSelector.foodText')}</p>
@@ -169,7 +178,7 @@ class MenuSelector extends Component {
     }
     else if (this.state.showFoodOrToilet) {
       menu = (
-        <FoodOrToilet msg={this.state.msg} back={this.showMainHideFoodOrToiletHandler} showLng={this.props.showLng} backToStart={this.backToStartFromEverythingHandler}/>
+        <FoodOrToilet msg={this.state.msg} back={this.showMainHideFoodOrToiletHandler} showLng={this.props.showLng} backToStart={() => {this.backToStartFromEverythingHandler(); this.props.showLng()}}/>
       );
     }
     else {

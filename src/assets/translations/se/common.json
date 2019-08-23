@@ -21,11 +21,18 @@
   "toiletOrFoodScreen": {
     "nearestWC": "Den närmaste toaletten är:",
     "cafeIs": "Kaféet är här:",
-    "wouldYouLike": "Vill du att jag ska ta dig dit?"
+    "wouldYouLike": "Vill du att jag ska ta dig dit?",
+    "no": "Nej tack.",
+    "yes": "Ja, tack!"
   },
   "bookMenu": {
     "findBookPlaceholder": "Sök efter böcker...",
-    "findCategory": "Bok kategorier:"
+    "findCategory": {
+      "Book Categories": "Bok Kategorier",
+      "Non-fiction" : "Facklitteratur",
+      "Fiction": "Fiktion",
+      "Music": "Musik"
+    }
   },
   "bookSearch": {
     "available": "Tillgängliga böcker med nyckelordet:",
@@ -35,7 +42,9 @@
 
   },
   "categorySearch": {
-    "h1": "Vill du vägledas till kategorin:"
+    "h1": "Vill du vägledas till kategorin:",
+    "chosenQuestion": "Ta dig till",
+    "section": "avsnittet."
 
   },
   "arrows": {
@@ -46,18 +55,43 @@
     "proceed": "Fortsätt"
   },
   "categories": {
-    "Traveling": "Resa",
-    "Cooking": "Matlagning",
-    "Arts": "Konst",
+    "Geography & Traveling": "Geografi och Resor",
+    "Cookbooks": "Kokböcker",
+    "Architecture & Art": "Arkitektur och Konst",
     "Languages": "Språk",
-    "Autobiographies": "Självbiografier ",
-    "History": "Historia"
+    "Biographies": "Biografier",
+    "History": "Historia",
+    "Philosophy, Psychology, Religion": "Filosofi, Psykologi och Religion",
+    "Society": "Samhälle",
+    "Natural Sciences": "Naturvetenskap",
+    "Medicine": "Medicin",
+    "Tech & Industry": "Teknik och Industri",
+    "Gardening & Pets": "Trädgårdsskötsel och Husdjur",
+    "Handicrafts": "Hantverk",
+    "Sports & Fitness": "Sport och Fitness",
+    "Literature Studies": "Litteraturstudier",
+    "Learn Finnish": "Lär di finska",
+    "Audio Books": "Ljudböcker",
+    "Plain Language Books": "Vanliga språkböcker",
+    "Poetry & Plays": "Poesi och Pjäser",
+    "Thriller": "Thriller",
+    "Comedy": "Komedi",
+    "Scifi & Fantasy": "Scifi och Fantasi",
+    "Horror": "Sckräck",
+    "General": "Generell",
+    "Swedish": "På svenska",
+    "English": "På engelska",
+    "Other Languages": "Andra språk",
+    "Sheet Music": "Noter",
+    "Music Theory": "Musikteori"
   },
   "arrowMessage": {
-    "Let's go!": "Nu går vi",
+    "Follow me, please!": "Följ efter mig tack!",
     "Look to your left!": "Se till vänster!",
     "Look to your right!": "Se till höger!",
     "Look to your both sides!": "Se till båda sidorna",
     "Bye bye! I'm going back to the starting point!": "Hejdå! Jag går tillbaka till utgångspunkten."
-  }
+  },
+
+  "notification": "Vi är framme!"
 }

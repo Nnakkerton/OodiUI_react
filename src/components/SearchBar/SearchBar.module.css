@@ -91,3 +91,36 @@
   background: #6F6E6E;
   border-radius: 10px;
 }
+
+.No {
+  position: fixed;
+  top: 898px;
+  left: 436px;
+	height: 97px;
+	width: 349px;
+  color: black;
+	border: 4.2px solid #000000;
+  background-color: #FFFFFF;
+  border-radius: 0px;
+  font-family: "Helsinki Grotesk";
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 45px;
+  text-align: center;
+}
+
+.Proceed {
+  position: fixed;
+  top: 898px;
+  left: 815px;
+  height: 97px;
+  width: 349px;
+  background-color: #000000;
+  border-radius: 0px;
+  font-family: "Helsinki Grotesk";
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 45px;
+  text-align: center;
+  color: #FFFFFF;
+}

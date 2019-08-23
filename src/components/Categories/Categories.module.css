@@ -1,11 +1,14 @@
 .categoriesArranged {
-  position: absolute;
+  position: fixed;
   top: 378px;
   left: 55px;
   width: 1590px;
   height: 600px;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+
 }
 
 .categoryHeader {
@@ -39,30 +42,187 @@
   width: 1200px;
 }
 
-.Holder {
-  margin: 0;
-  padding: 0;
-}
-
-.Holder li {
-  float: left;
-  margin-bottom: 10px;
-}
-
-.Holder li Category {
-  width: 100px;
-}
-
 .MainCategories {
   position: relative;
   top: 0px;
-  left: 100px;
+  left: 0px;
 	height: 97px;
-	width: 349px;
-  margin: 30px;
+	width: 443px;
+  margin-left: 10px;
+  margin-right: 55px;
+  margin-bottom: 40px;
   background-color: white;
 	border: 4.2px solid #000000;
   font-size: 35px;
   font-weight: bold;
   font-family: "Helsinki Grotesk";
+}
+
+
+.Category {
+  position: relative;
+  top: 0px;
+  left: 0px;
+	height: 97px;
+	width: 349px;
+  margin: 30px;
+  background-color: white;
+	border: 4.2px solid #000000;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Helsinki Grotesk";
+}
+
+.BottomBar {
+  position: fixed;
+  top: 1090px;
+  left: 0px;
+  width: 1600px;
+  height: 110px;
+}
+
+.LeftArrow {
+  position: fixed;
+  top: 1111px;
+  left: 35px;
+  height: 70px;
+  width: 70px;
+}
+
+.BackButtonText {
+  position: fixed;
+  top: 1085px;
+  left: 140px;
+  height: 51px;
+  width: 89px;
+  color: #1F1F1F;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 51px;
+}
+
+.GuidanceContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 1200px;
+}
+
+.GuidanceMsg {
+  position: fixed;
+  top: 200px;
+  left: 0px;
+  height: 154px;
+  width: 1600px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 120px;
+  font-weight: bold;
+  line-height: 154px;
+  text-align: center;
+}
+
+.GuidanceSubMsg {
+  position: fixed;
+  top: 516px;
+  left: 145px;
+  height: 64px;
+  width: 1293px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.Arrow {
+  position: fixed;
+  top: 680px;
+  left: 685px;
+  height: 210px;
+  width: 210px;
+}
+
+.GuidanceMsgForHome {
+  position: fixed;
+  top: 101px;
+  left: 0px;
+  height: 154px;
+  width: 1600px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 120px;
+  font-weight: bold;
+  line-height: 154px;
+  text-align: center;
+}
+
+.GuidanceSubMsgForHome {
+  position: fixed;
+  top: 296px;
+  left: 145px;
+  height: 64px;
+  width: 1293px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.ArrowIcon {
+  position: fixed;
+  top: 672px;
+  left: 708px;
+  height: 194px;
+  width: 185px;
+}
+
+.IconForHome {
+  position: fixed;
+  top: 500px;
+  left: 685px;
+  height: 210px;
+  width: 210px;
+}
+
+.StartLogo {
+  position: fixed;
+  bottom: 0px;
+  left: -1px;
+}
+
+.rectangle {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+}
+
+.OodiBox {
+  position: fixed;
+  top: 29px;
+  left: 1393px;
+  height: 111px;
+  width: 173px;
+  background-color: #FFFFFF;
+  border: 0px;
+}
+
+.isGuidanceRequired {
+  position: fixed;
+  top: 150px;
+  left: 0px;
+  height: 154px;
+  width: 1600px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 154px;
+  text-align: center;
 }

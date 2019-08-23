@@ -30,7 +30,7 @@
   left: 1393px;
   height: 111px;
   width: 173px;
-  background-color: #FFFFFF;
+  background-color:inherit;
 }
 
 .OodiBox {
@@ -39,8 +39,9 @@
   left: 1393px;
   height: 111px;
   width: 173px;
-  background-color: #FFFFFF;
+  background-color: inherit;
   border: 0px;
+  margin: 0px;
 }
 
 .BottomBar {

@@ -102,3 +102,107 @@
   width: 1600px;
   background-color: #F4D9E5;
 }
+
+.GuidanceContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 1200px;
+}
+
+.GuidanceMsg {
+  position: fixed;
+  top: 335px;
+  left: 0px;
+  height: 154px;
+  width: 1600px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 120px;
+  font-weight: bold;
+  line-height: 154px;
+  text-align: center;
+}
+
+.GuidanceSubMsg {
+  position: fixed;
+  top: 516px;
+  left: 145px;
+  height: 64px;
+  width: 1293px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.Icon {
+  position: fixed;
+  top: 680px;
+  left: 685px;
+  height: 210px;
+  width: 210px;
+}
+
+.GuidanceMsgForHome {
+  position: fixed;
+  top: 101px;
+  left: 0px;
+  height: 154px;
+  width: 1600px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 120px;
+  font-weight: bold;
+  line-height: 154px;
+  text-align: center;
+}
+
+.GuidanceSubMsgForHome {
+  position: fixed;
+  top: 296px;
+  left: 145px;
+  height: 64px;
+  width: 1293px;
+  color: #000000;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.IconForHome {
+  position: fixed;
+  top: 460px;
+  left: 685px;
+  height: 210px;
+  width: 210px;
+}
+
+.IconWavePink {
+  position: fixed;
+  top: 1104px;
+  left: 0px;
+  height: 96px;
+  width: 1600px;
+  background: #F4D9E5;
+  mask: url(../../assets/images/Border-Bottom.svg);
+}
+
+.IconWaveYellow {
+  position: fixed;
+  top: 1104px;
+  left: 0px;
+  height: 96px;
+  width: 1600px;
+  background: #FFEA80;
+  mask: url(../../assets/images/Border-Bottom.svg);
+}
+
+.StartLogo {
+  position: fixed;
+  bottom: 0px;
+  left: -1px;
+}

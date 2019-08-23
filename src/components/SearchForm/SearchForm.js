@@ -4,10 +4,9 @@ import axios from 'axios';
 import classes from './SearchForm.module.css';
 import Aux from '../../hoc/Aux';
 import Button from '../Button/Button';
-import InfoBar from '../InfoBar/InfoBar';
-//import MenuSelector from '../../containers/MenuSelector/MenuSelector';
 import SearchBar from '../SearchBar/SearchBar';
 
+import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
 import rightArrow from '../../assets/images/Icon-Arrow-Right.svg';
 import upArrow from '../../assets/images/Icon-Arrow-Up.svg';
@@ -29,12 +28,21 @@ class SearchForm extends Component {
     arrowMessage: '',
     arrowDirection: '',
     guidanceStarted: false,
-    keepBackButtonUnchanged: true
+    keepBackButtonUnchanged: true,
+    savedBookResults: []
   }
 
   searchTermHandler = (event) => {
     this.setState({searchTerm: event.target.value});
   }
+
+    keepBackButtonUnchangedHandler = () => {
+      this.setState({keepBackButtonUnchanged: true});
+    }
+
+    changeBackButtonHandler = () => {
+      this.setState({keepBackButtonUnchanged: false});
+    }
 
   sendDataHandler = () => {
     this.setState({showSearchResultsHeader: true});
@@ -48,27 +56,29 @@ class SearchForm extends Component {
           .get('http://localhost:3001/get_books')
           .then(response => {
             this.setState({books: Object.entries(Object.entries(response.data)[0][1])});
-            console.log("Books received in form:", this.state.books);
-          })
-
+            console.log("Books received in form:", this.state.books);})
           .catch(err => {
-            console.log(err);
-          })
+            console.log(err);})
         )
       .catch(err => {
-        console.error(err);
-      })
+        console.error(err);})
   }
 
   changeNotSearchingHandler = () => {
     this.setState({notSearching: true});
-    this.setState({searchTerm: ''});
+
+    //this.setState({searchTerm: ''});
+  }
+
+  saveBookResultsHandler = (books) => {
+    this.setState({savedBookResults: books});
   }
 
   changeInfoBarsStateFalseHandler = (bookTitle, bookId) => {
     //will set the states so that the different book result buttons will be hidden.
     //also sets the states to hide the back button in the term results view AND hide the found books.
     //Also, the state for showing the chosen book's title is enabled here.
+    this.setState({notSearching: false});
     this.setState({showInfoBars: false});
     this.setState({showBackButton: false});
     this.setState({showSearchResultsHeader: false});
@@ -79,9 +89,11 @@ class SearchForm extends Component {
 
   changeInfoBarsStateTrueHandler = () => {
     //reverts the changes done in changeInfoBarsStateFalseHandler!
+    this.setState({notSearching: true});
     this.setState({showInfoBars: true});
     this.setState({showBackButton: true});
     this.setState({showSearchResultsHeader: true});
+    this.setState({keepBackButtonUnchanged: true});
     console.log("Infobars will be SHOWN");
   }
 
@@ -92,17 +104,7 @@ class SearchForm extends Component {
       .then(() => ( this.getArrowSignalHandler()
       ))
       .catch(err => {
-        console.log(err)
-      })
-
-  }
-
-  keepBackButtonUnchangedHandler = () => {
-    this.setState({keepBackButtonUnchanged: true});
-  }
-
-  changeBackButtonHandler = () => {
-    this.setState({keepBackButtonUnchanged: false});
+        console.log(err)})
   }
 
   getArrowSignalHandler = () => {
@@ -134,7 +136,7 @@ class SearchForm extends Component {
         }
         else {
           this.setState({arrowDirection: upArrow});
-          this.setState({arrowMessage: "Let's go!"});
+          this.setState({arrowMessage: "Follow me, please!"});
           console.log("no matching arrow");
         }
         setTimeout(this.getArrowSignalHandler, 2000)
@@ -168,85 +170,39 @@ class SearchForm extends Component {
       })
   }
 
+
   render() {
     const { t } = this.props
 
     //book[1].title, book[1].author, book[1].bibid show the book's title, author and id, in respect.
 
-    let form;
-    if (this.state.notSearching) {
-      form = (
-        <Aux>
-          <form>
-            <input
-              type="text"
-              className={classes.SearchForm}
-              placeholder={t('bookMenu.findBookPlaceholder')}
-              onChange={this.searchTermHandler}
-              values={this.state.searchTerm}
-              />
-            <div className={classes.Button}>
-              <input type="submit" onClick={() => {this.sendDataHandler(); this.props.clicked()}} />
-            </div>
-          </form>
-        </Aux>
-      )
-    }
-    else {
-      if (this.state.showSearchResultsHeader) {
-        form = <div>
-        {t('bookSearch.available')}
-        <strong>{this.state.searchTerm}</strong>
-                </div>
-      }
-    }
-
     return (
-      <div>
-      <SearchBar clicked={() => {this.props.clicked(); this.changeBackButtonHandler();}} showCategories={this.props.showCategories} changeBackButton={this.keepBackButtonUnchangedHandler}/>
-      {this.state.keepBackButtonUnchanged
-      ? <div className={classes.BottomBar}>
-          <button className={classes.BackButton} onClick={() => {this.props.back(); this.props.showLng()}}>
-            <img src={leftArrow} alt="leftArrow" className={classes.LeftArrow} />
-            <h1 className={classes.BackButtonText}>Back</h1>
-          </button>
-          </div>
-      :null}
-
-        {form}
-          {this.state.notSearching
-          ? null
-          : <Aux>
-            {this.state.showBackButton
-              ? <Button btnType="Back" clicked={() => {this.changeNotSearchingHandler();  this.props.showCategories()}}>{t('button.back')}</Button>
-              : null
-            }
-              {this.state.showInfoBars
-              ? this.state.books.map(book => {
-                return null
-                {/*<div key={book[1].bibid}>
-                  <InfoBar author={book[1].author} title={book[1].title} id={book[1].bibid} clicked={() => {this.changeInfoBarsStateFalseHandler(book[1].title, book[1].bibid)}}/>
-                  </div>*/}
-              })
-              : <div>
-                {this.state.guidanceStarted === false
-                ?  <Aux>
-                  <h1>{t('bookSearch.startGuidance')}
-                  {this.state.chosenBook}</h1>
-                  <Button btnType="Back" clicked={this.changeInfoBarsStateTrueHandler}>{t('button.back')}</Button>
-                  <Button clicked={() => this.startGuidanceHandler(this.state.chosenBookId)}>{t('button.proceed')}</Button>
-                  </Aux>
-                : <div>
-                  <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
-                  <img src={this.state.arrowDirection} alt="arrow"/>
-                  </div>
-            }
+        <Aux>
+          {this.state.keepBackButtonUnchanged
+          ? <div className={classes.BottomBar}>
+              <button className={classes.BackButton} onClick={() => {this.props.back(); this.props.showLng()}}>
+                <img src={leftArrow} alt="leftArrow" className={classes.LeftArrow} />
+                <h1 className={classes.BackButtonText}>Back</h1>
+              </button>
+              </div>
+          : null}
+          {this.state.guidanceStarted
+            ? <Aux>
+            <div className={classes.OodiBox}>
+              <img src={Oodi} className={classes.rectangle} alt="Oodi" />
             </div>
-            }
-            </Aux>
-          }
-      </div>
-    )
+            <div>
+              <h1>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+              <img src={this.state.arrowDirection} alt="arrow"/>
+            </div>
+              </Aux>
+            : <SearchBar clicked={() => {this.props.clicked(); this.changeBackButtonHandler()}}
+            chooseBook={this.changeInfoBarsStateFalseHandler} showCategories={this.props.showCategories} changeBackButton={this.keepBackButtonUnchangedHandler}
+            placeWaveDown={this.props.placeWaveDown}
+            placeWaveUp={this.props.placeWaveUp}
+            startGuidance={this.startGuidanceHandler}/>}
+        </Aux>
+  )
   }
 };
 
