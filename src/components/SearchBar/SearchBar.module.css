@@ -33,7 +33,7 @@
   left: 15px;
   height: 889px;
   width: 1585px;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 
 .BackButton {
@@ -41,15 +41,15 @@
   top: 1111px;
   left: 35px;
   height: 70px;
-  width: 200px;
+  width: 250px;
 }
 
 .LeftArrow {
   position: fixed;
-  top: 1111px;
-  left: 35px;
-  height: 70px;
-  width: 70px;
+  top: 1116px;
+  left: 40px;
+  height: 60px;
+  width: 60px;
 }
 
 .BackButtonText {
@@ -58,7 +58,7 @@
   left: 140px;
   height: 51px;
   width: 89px;
-  color: #1F1F1F;
+  color: #1f1f1f;
   font-family: "Helsinki Grotesk";
   font-size: 50px;
   font-weight: bold;
@@ -71,9 +71,10 @@
   left: 1377px;
   height: 51px;
   width: 189px;
-  color: #1F1F1F;
+  color: #1f1f1f;
   font-family: "Helsinki Grotesk";
-  font-size: 50px;
+  font-size: 25px;
+  font-weight: bold;
   line-height: 51px;
   text-align: right;
   margin: 0px;
@@ -84,11 +85,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #DDDDE7;
+  background-color: #dddde7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6F6E6E;
+  background: #6f6e6e;
   border-radius: 10px;
 }
 
@@ -96,16 +97,29 @@
   position: fixed;
   top: 898px;
   left: 436px;
-	height: 97px;
-	width: 349px;
+  height: 97px;
+  width: 349px;
   color: black;
-	border: 4.2px solid #000000;
-  background-color: #FFFFFF;
+  border: 4.2px solid #000000;
+  background-color: #ffffff;
   border-radius: 0px;
   font-family: "Helsinki Grotesk";
   font-size: 35px;
   font-weight: bold;
   line-height: 45px;
+  text-align: center;
+}
+
+.ConfirmationMessage {
+  position: fixed;
+  top: 300px;
+  left: 100px;
+  height: 107px;
+  width: 1400px;
+  color: #1f1f1f;
+  font-family: "Helsinki Grotesk";
+  font-size: 50px;
+  line-height: 107px;
   text-align: center;
 }
 
@@ -122,5 +136,14 @@
   font-weight: bold;
   line-height: 45px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
+}
+
+.CommunicationMessage {
+  position: fixed;
+  top: 400px;
+  font-family: "Helsinki Grotesk";
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
 }

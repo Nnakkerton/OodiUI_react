@@ -45,7 +45,7 @@ function ToiletOrFood(props) {
           setSubMsg("I'm returning to my station. See you next time!");
           return returnHomeHandler();
         }
-        else if (response.data.data === 'WC') {
+        else if (response.data.data === 'toilet') {
           setIcon(WCLogo);
           setMessage('We have arrived!');
           setSubMsg("I'll just leave you here.");
@@ -57,11 +57,9 @@ function ToiletOrFood(props) {
         }
         else {
             setIcon(UpArrow);
-            //setMessage('Follow me, please!');
-            setMessage('Please follow me!');
+            setMessage('Follow me, please!');
             if (props.msg === "WC") {
-              setSubMsg('')
-              //setSubMsg('Guiding you to the nearest WC.')
+              setSubMsg('Guiding you to the nearest WC.')
             }
             else if (props.msg === "cafe") {
               setSubMsg('Guiding you to the café.')

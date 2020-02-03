@@ -1,0 +1,166 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+import Button from '../Button/Button';
+import Aux from '../../hoc/Aux';
+
+import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
+import classes from './FoodOrToilet.module.css';
+
+import HomeImage from '../../assets/images/Icon-Home.svg';
+import UpArrow from '../../assets/images/Icon-Arrow-Up.svg';
+import CafeLogo from '../../assets/images/Icon-Cafe.svg';
+import WCLogo from '../../assets/images/Icon-WC.svg';
+import StartLogo from '../../assets/images/Border-Image.png';
+import OodiMap from '../../assets/images/OodiWCandCafeMap.png';
+
+import { withTranslation } from 'react-i18next';
+
+class ToiletOrFood extends Component {
+
+  state = {
+    message: '',
+    subMsg: '',
+    icon: '',
+    msg: ''
+  }
+
+/*
+  const [switchToGuidance, setSwitchToGuidance] = useState(false);
+  const [message, setMessage] = useState('');
+  const [subMsg, setSubMsg] = useState('');
+  const [icon, setIcon] = useState('');
+
+  const { t } = props
+*/
+
+  goToCafeOrToiletHandler = () => {
+    let msg = this.state.props.msg;
+    this.setState({startGuidance: true});
+
+    axios
+      .post('http://localhost:3001/food_or_toilet_guidance', {msg})
+      .then(() =>
+        this.startGuidanceHandler()
+      )
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  startGuidanceHandler = () => {
+    axios
+      .get('http://localhost:3001/guidance')
+      .then( response => {
+        console.log("The arrow response from the server is", response.data.data);
+        if (response.data.data === 'home') {
+          this.setState({arrowDirection: HomeImage});
+          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"});
+	  console.log("arrow is currently:", this.state.arrowDirection);
+          return this.returnHomeHandler();
+        }
+        else if (response.data.data === 'toilet') {
+          this.setState({Icon: WCLogo});
+          this.setState({Message: "We have arrived!"});
+          this.setState({SubMsg: "I'll just leave you here."});
+        }
+        else if (response.data.data === 'cafe') {
+          this.setState({Icon: CafeLogo});
+          this.setState({Message: "We have arrived!"});
+          this.setState({SubMsg: "I'll just leave you here."});
+        }
+        else {
+            this.setState({Icon: UpArrow});
+            this.setState({Message: "Follow me, please!"});
+            if (this.props.msg === "WC") {
+              this.setState({SubMsg: "Guiding you to the nearest WC."});
+            }
+            else if (this.props.msg === "cafe") {
+              this.setState({SubMsg: "Guiding you to the café."});
+            }
+          }
+          setTimeout(this.startGuidanceHandler, 2000)
+        }
+      )
+      .catch(err => {
+        console.log(err);
+    })
+  }
+
+  returnHomeHandler = () => {
+    axios
+      .get('http://localhost:3001/guidance')
+      .then( response => {
+        if (response.data.data === 'home') {
+          console.log("Still only receiving home")
+          setTimeout(this.returnHomeHandler, 2000);
+        }
+        else if (response.data.data === 'home2') {
+          console.log("WE ARE BACK HOME!");
+          this.props.backToStart();
+        }
+        else {
+          console.log("received something else");
+          setTimeout(this.returnHomeHandler, 2000);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  render() {
+    const { t } = this.props; 
+    return (
+      <Aux>
+      <button onClick={() => {this.props.backToStart(); this.props.showLng()}} className={classes.OodiBox}>
+        <img src={Oodi} className={classes.rectangle} alt="Oodi" />
+      </button>
+      <div>
+      {this.switchToGuidance === false
+      ? <Aux>
+          <div className={classes.TitleHolder}>
+            {t(`toiletOrFoodScreen.${this.props.msg}`)}
+          </div>
+          <div>
+            <img src={OodiMap} className={classes.MapBox} alt="OodiMap" />
+          </div>
+          <h1 className={classes.WouldYouLikeToilet}>{t('toiletOrFoodScreen.wouldYouLike')}</h1>
+          <Button btnType="No" clicked={() => {this.props.back(); this.props.showLng()}} value={t('toiletOrFoodScreen.no')} />
+          <Button btnType="Proceed" value={t('toiletOrFoodScreen.yes')} clicked={() => {this.goToCafeOrToiletHandler();
+            this.setSwitchToGuidance(true)}} />
+          <span className={classes.IconWave} />
+        </Aux>
+      : <Aux>
+          <div className={classes.OodiBox}>
+            <img src={Oodi} className={classes.rectangle} alt="Oodi" />
+          </div>
+        </Aux>}
+      </div>
+      {this.state.message === "Bye bye!"
+        ? <Aux>
+            <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
+            <div className={classes.GuidanceContainer}>
+              <h1 className={classes.GuidanceMsgForHome}>{this.state.message}</h1>
+              <h2 className={classes.GuidanceSubMsgForHome}>{this.state.subMsg}</h2>
+              <img className={classes.IconForHome} src={this.state.icon} alt="icon"/>
+            </div>
+          </Aux>
+        : <Aux>
+            <h1 className={classes.GuidanceMsg}>{this.state.message}</h1>
+            <h2 className={classes.GuidanceSubMsg}>{this.state.subMsg}</h2>
+            {this.state.icon === ''
+              ? null
+              : <img className={classes.Icon} src={this.state.icon} alt="icon"/>}
+            {this.props.msg === "WC"
+              ? <span className={classes.IconWavePink} />
+              : <span className={classes.IconWaveYellow} />
+            }
+          </Aux>
+      }
+      </Aux>
+  );
+  }
+}
+ //if else structure for clicking the button after which the screen will switch to guidance screen SIMPLE AS THAT!
+export default withTranslation('common')(ToiletOrFood);
