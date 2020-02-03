@@ -7,26 +7,27 @@
   "mainMenu": {
     "bookSelector": {
       "books": "Kirjat",
-      "bookText": "Etsi kirjoja hakusanan tai kategorian avulla."
+      "bookText": "Etsi kirjoja hakusanan tai kategorian avulla"
       },
     "toiletSelector": {
       "toilet": "WC",
-      "toiletText": "Etsi lähin julkinen WC-tila."
+      "toiletText": "Etsi lähin julkinen WC-tila"
       },
     "foodSelector": {
       "food": "Kahvila",
-      "foodText": "Välipalaa ja kahvia kahvilastamme."
+      "foodText": "Välipalaa ja kahvia kahvilastamme"
       }
   },
   "toiletOrFoodScreen": {
-    "nearestWC": "Lähin WC on:",
-    "cafeIs": "Kahvila on:",
-    "wouldYouLike": "Haluatko, että vien sinut perille asti?",
+    "WC": "Lähimmän WC:n sijainti:",
+    "cafe": "Kolmannessa kerroksessa on kahvila",
+    "wouldYouLike": "Haluatko opastuksen perille?",
     "no": "Ei, kiitos.",
-    "yes": "Kyllä, kiitos!"
+    "yes": "Kyllä, kiitos!",
+    "WCCafeFollow": "Seuratkaa minua!"
   },
   "bookMenu": {
-    "findBookPlaceholder": "Etsi kirjoja...",
+    "findBookPlaceholder": "Etsi kirjoja tai kirjailijoita (esim: oksanen, sofi)",
     "findCategory": {
       "Book Categories": "Kategoriat",
       "Non-fiction" : "Tietokirjallisuus",
@@ -36,13 +37,15 @@
 
   },
   "bookSearch": {
-    "available": "Löydettiin seuraavat kirjat hyllystä hakusanalla:",
-    "startGuidance": "Haluatko opastuksen seuraavan kirjan luokse:",
+    "available": "Löydettiin seuraavat teokset hyllystä hakusanalla:",
+    "startGuidance": "Haluatko, että opastan teokselle:",
     "title": "Teos:",
-    "author": "Tekijä:"
+    "author": "Tekijä:",
+    "searching": "Etsitään hyllyssä olevia teoksia...",
+    "nonefound": "Hakutermillä ei löytynyt yhtään teosta."
   },
   "categorySearch": {
-    "h1": "Haluatko, että vien sinut perille?",
+    "h1": "Haluatko, että opastan sinut perille?",
     "section": ""
   },
   "arrows": {
@@ -52,6 +55,9 @@
     "proceed": "Opasta"
   },
   "categories": {
+    "Non-fiction": "Tietokirjat",
+    "Fiction" : "Fiktio",
+    "Music" : "Musiikki",
     "Geography & Traveling": "Matkailu ja maantiede",
     "Cookbooks": "Keittokirjat",
     "Architecture & Art": "Arkkitehtuuri ja taide",
@@ -85,13 +91,23 @@
   "arrowMessage": {
     "We have arrived!": "Olemme perillä!",
     "Follow me, please!": "Seuraa minua!",
-    "Bye bye! I'm going back to the starting point!": "Hei hei!",
+    "Bye bye!": "Hei hei!",
     "subMsg": "Menen takaisin kotipisteeseeni."
   },
   "arrowSubMessage": {
-    "Left": "Ole hyvä ja tarkista vasen hylly.",
-    "Right": "Ole hyvä ja tarkista oikea hylly.",
-    "Both": "Ole hyvä ja tarkista kummankin puolen hyllyt."
+    "Sorry": "Olen pahoillani, en tiedä sijaintia! Sinun täytyy kysyä ihmiseltä :(",
+    "undefined": "Ole hyvä ja seuraa minua!",
+    "Section" : "Olen matkalla valitsemallesi kategorialle",
+    "Left": "Ole hyvä ja tarkista vasemmalta",
+    "Right": "Ole hyvä ja tarkista oikealta",
+    "Homing": "Hei Hei! Palaan kotiin",
+    "Homing2": "Palaan kotiin",
+    "Both": "Ole hyvä ja tarkista kummatkin puolet",
+    "custom1": "Tarkista viisi hyllyä oikealla",
+    "custom2": "Tarkista seitsemän hyllyä oikealla",
+    "custom3": "Tarkista edessäsi olevat hyllyt",
+    "custom_music": "Tarkista viisi hyllyä vasemmalla",
+    "custom_pic_books": "Tarkista neljä hyllyä edessäsi"
   },
 
   "notification": "Olemme perillä!"

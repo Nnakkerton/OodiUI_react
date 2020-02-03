@@ -10,7 +10,9 @@ import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
 import leftArrow from '../../assets/images/Icon-Arrow-Left.svg';
 import rightArrow from '../../assets/images/Icon-Arrow-Right.svg';
 import upArrow from '../../assets/images/Icon-Arrow-Up.svg';
+import bothArrow from '../../assets/images/Icon-Arrow-Both.svg';
 import homeImage from '../../assets/images/Icon-Home.svg';
+import blankImage from '../../assets/images/Icon-Blank.svg';
 import { withTranslation } from 'react-i18next';
 
 //import Oodi from '../../assets/images/Icon-Oodi-Black.svg';
@@ -114,7 +116,13 @@ class SearchForm extends Component {
       console.log("The arrow response from the server is", response.data.data);
       if (response.data.data === 'home') {
         this.setState({arrowDirection: homeImage});
-        this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
+        this.setState({arrowSubMessage: "Homing"})
+        console.log("arrow is currently:", this.state.arrowDirection);
+        return this.returnHomeHandler();
+      }
+      else if (response.data.data === 'sorry') {
+        this.setState({arrowDirection: blankImage});
+        this.setState({arrowSubMessage: "Sorry"})
         console.log("arrow is currently:", this.state.arrowDirection);
         return this.returnHomeHandler();
       }
@@ -129,10 +137,35 @@ class SearchForm extends Component {
           this.setState({arrowSubMessage: "Right"});
           console.log("received right arrow");
         }
-        else if (response.data.data === 'lr') {
-          this.setState({arrowDirection: leftArrow});
+        else if (response.data.data === 'both') {
+          this.setState({arrowDirection: bothArrow});
           this.setState({arrowSubMessage: "Both"});
           console.log("received leftright arrow");
+        }
+        else if (response.data.data === 'lr') {
+          this.setState({arrowDirection: bothArrow});
+          this.setState({arrowSubMessage: "Both"});
+          console.log("received leftright arrow");
+        }
+        else if (response.data.data === 'custom1') {
+          this.setState({arrowDirection: rightArrow});
+          this.setState({arrowMessage: "We have arrived!"});
+          this.setState({arrowSubMessage: "custom1"});
+        }
+        else if (response.data.data === 'custom2') {
+          this.setState({arrowDirection: rightArrow});
+          this.setState({arrowMessage: "We have arrived!"});
+          this.setState({arrowSubMessage: "custom2"});
+        }
+        else if (response.data.data === 'custom3') {
+          this.setState({arrowDirection: upArrow});
+          this.setState({arrowMessage: "We have arrived!"});
+          this.setState({arrowSubMessage: "custom3"});
+        }
+        else if (response.data.data === 'custom_pic_books') {
+          this.setState({arrowDirection: upArrow});
+          this.setState({arrowMessage: "We have arrived!"});
+          this.setState({arrowSubMessage: "custom_pic_books"});
         }
         else {
           this.setState({arrowDirection: upArrow});
@@ -192,8 +225,8 @@ class SearchForm extends Component {
               <img src={Oodi} className={classes.rectangle} alt="Oodi" />
             </div>
             <div>
-              <h1>{t(`arrowSubMessage.${this.state.arrowSubMessage}`)}</h1>
-              <img src={this.state.arrowDirection} alt="arrow"/>
+              <h1 className={classes.GuidanceMsg}>{t(`arrowSubMessage.${this.state.arrowSubMessage}`)}</h1>
+              <img src={this.state.arrowDirection} alt="arrow" className={classes.Arrow} />
             </div>
               </Aux>
             : <SearchBar clicked={() => {this.props.clicked(); this.changeBackButtonHandler()}}

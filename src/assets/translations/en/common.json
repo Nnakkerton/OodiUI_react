@@ -1,13 +1,13 @@
 {
   "startMenu": {
     "header": "Hey!",
-    "description1": "I am here to help you find your way around the library",
+    "description1": "I can help you find your way around the library",
     "startButton": "Start here"
   },
   "mainMenu": {
     "bookSelector": {
       "books": "Books",
-      "bookText": "Search or browse by categories."
+      "bookText": "Search books, or find a category"
       },
     "toiletSelector": {
       "toilet": "WC",
@@ -15,18 +15,19 @@
       },
     "foodSelector": {
       "food": "Food & drink",
-      "foodText": "Snacks and coffee from our café."
+      "foodText": "Snacks and coffee from our café"
       }
   },
   "toiletOrFoodScreen": {
+    "WC": "The nearest WC:",
     "nearestWC": "The nearest WC:",
-    "cafeIs": "The cafe is here:",
-    "wouldYouLike": "Would you like me to bring you there?",
+    "cafe": "The cafe is here:",
+    "wouldYouLike": "Should I take you there?",
     "no": "No thanks.",
     "yes": "Yes, please!"
   },
   "bookMenu": {
-    "findBookPlaceholder": "Search for books...",
+    "findBookPlaceholder": "Search for books or author (ex: atwood, margaret)",
     "findCategory": {
       "Book Categories": "Book Categories",
       "Non-fiction" : "Non-fiction",
@@ -36,12 +37,14 @@
   },
   "bookSearch": {
     "available": "Available books with the keyword:",
-    "startGuidance": "Would you like to be guided to the following book:",
+    "startGuidance": "Would you like to be guided to: ",
     "title": "Title:",
-    "author": "Author:"
+    "author": "Author:",
+    "searching": "Looking for books currently available...",
+    "nonefound": "No books found with your search term."
   },
   "categorySearch": {
-    "h1": "Would you like me to bring you there?",
+    "h1": "Would you like to follow me there?",
     "section": "section"
   },
   "arrows": {
@@ -51,13 +54,16 @@
     "proceed": "Proceed"
   },
   "categories": {
+    "Non-fiction": "Non-fiction",
+    "Fiction": "Fiction",
+    "Music": "Music",
     "Geography & Traveling": "Geography and Traveling",
     "Cookbooks": "Cookbooks",
     "Architecture & Art": "Architecture and Art",
     "Languages": "Languages",
     "Biographies": "Biographies",
     "History": "History",
-    "Philosophy, Psychology, Religion": "Philosophy, Psychology and Religion",
+    "Philosophy, Psychology, Religion": "Philosophy, Psychology, Religion",
     "Society": "Society",
     "Natural Sciences": "Natural Sciences",
     "Medicine": "Medicine",
@@ -85,13 +91,23 @@
   "arrowMessage": {
     "We have arrived!": "We have arrived!",
     "Follow me, please!": "Follow me, please!",
-    "Bye bye! I'm going back to the starting point!": "Bye bye!",
-    "subMsg": "I'm going back to the starting point."
+    "subMsg": "I'm going back to the starting point",
+    "Bye bye!": "Bye bye!"
   },
   "arrowSubMessage": {
-    "Left": "Please check the shelf on the left.",
-    "Right": "Please check the shelf on the right.",
-    "Both": "Please check the shelves on your both sides."
+    "Sorry": "I cannot locate that :( You'll have to ask a human. I am sorry!",
+    "undefined": "Please follow me!",
+    "Section" : "On my way to your chosen category",
+    "Left": "Please check on the left side",
+    "Right": "Please check on the right side",
+    "Homing": "Bye! I'm heading home",
+    "Homing2": "I'm heading back home",
+    "Both": "Please check shelves on both sides",
+    "custom1": "Please check the five shelves on right",
+    "custom2": "Please check the seven shelves on right",
+    "custom3": "Please check the shelves in front of you",
+    "custom_music": "Please check the five shelves on left",
+    "custom_pic_books": "Please check the four shelves in front of you"
   },
   "notification": "We have arrived!"
 }

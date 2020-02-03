@@ -38,22 +38,22 @@ class Categories extends Component {
         {id: '990', title: 'Biographies'}
       ] },
       {mainCategory: 'Fiction', subCategories: [
-        {id: '', title: 'Audio Books'},
-        {id: '', title: 'Plain Language Books'},
-        {id: '1', title: 'Poetry & Plays'},
-        {id: '1.4', title: 'Thriller'},
-        {id: '1.4', title: 'Comedy'},
-        {id: '1.4', title: 'Scifi & Fantasy'},
-        {id: '1.4', title: 'Horror'},
-        {id: '', title: 'General'},
-        {id: '2', title: 'Swedish'},
-        {id: '4', title: 'English'},
-        {id: '', title: 'Other Languages'}
+        {id: '1.4 nikirjat', title: 'Audio Books'},
+        {id: '1.4 selkokirjat', title: 'Plain Language Books'},
+        {id: '1 runot', title: 'Poetry & Plays'},
+        {id: '1.4 jnnitys', title: 'Thriller'},
+        {id: '1.4 viihde', title: 'Comedy'},
+        {id: '1.4 scifi', title: 'Scifi & Fantasy'},
+        {id: '1.4 kauhu', title: 'Horror'},
+        {id: '1.4 yleinen', title: 'General'},
+        {id: '2.4 ruotsi', title: 'Swedish'},
+        {id: '4.4 englanti', title: 'English'},
+        {id: '9.0 muut kielet', title: 'Other Languages'}
       ] },
       {mainCategory: 'Music', subCategories: [
-        {id: '780', title: 'Biographies'},
-        {id: '780', title: 'Sheet Music'},
-        {id: '780', title: 'Music Theory'}
+        {id: '783', title: 'Biographies'},
+        {id: '786', title: 'Sheet Music'},
+        {id: '782', title: 'Music Theory'}
       ] }
     ],
     categories: [],
@@ -103,7 +103,8 @@ class Categories extends Component {
         console.log("The arrow response from the server is", response.data.data);
         if (response.data.data === 'home') {
           this.setState({arrowDirection: HomeImage});
-          this.setState({arrowMessage: "Bye bye! I'm going back to the starting point!"})
+          this.setState({arrowMessage: "Bye bye!"});
+	  this.setState({arrowSubMessage: "Homing2"});
           console.log("arrow is currently:", this.state.arrowDirection);
           return this.returnHomeHandler();
         }
@@ -111,7 +112,7 @@ class Categories extends Component {
           if (response.data.data === 'l') {
             this.setState({arrowDirection: LeftArrow});
             this.setState({arrowMessage: "We have arrived!"});
-            this.setState({arrowSubMessage: "Left"})
+            this.setState({arrowSubMessage: "Left"});
             console.log("received left arrow");
           }
           else if (response.data.data === 'r') {
@@ -120,12 +121,43 @@ class Categories extends Component {
             this.setState({arrowSubMessage: "Right"});
             console.log("received right arrow");
           }
+          else if (response.data.data === 'both') {
+            this.setState({arrowDirection: LeftArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "Both"});
+            console.log("received leftright arrow");
+          }
           else if (response.data.data === 'lr') {
             this.setState({arrowDirection: LeftArrow});
             this.setState({arrowMessage: "We have arrived!"});
             this.setState({arrowSubMessage: "Both"});
             console.log("received leftright arrow");
           }
+          else if (response.data.data === 'custom1') {
+            this.setState({arrowDirection: RightArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "custom1"});
+          }
+          else if (response.data.data === 'custom2') {
+            this.setState({arrowDirection: RightArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "custom2"});
+	  }
+          else if (response.data.data === 'custom3') {
+            this.setState({arrowDirection: UpArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "custom3"});
+	  }
+          else if (response.data.data === 'custom_music') {
+            this.setState({arrowDirection: LeftArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "custom_music"});
+	  }
+          else if (response.data.data === 'custom_pic_books') {
+            this.setState({arrowDirection: UpArrow});
+            this.setState({arrowMessage: "We have arrived!"});
+            this.setState({arrowSubMessage: "custom_pic_books"});
+	  }
           else {
             this.setState({arrowDirection: UpArrow});
             this.setState({arrowMessage: "Follow me, please!"});
@@ -207,7 +239,7 @@ class Categories extends Component {
                 <button className={classes.MainCategories}
                 onClick={() => {this.addSubCategoriesHandler(Object.values(maincategory.subCategories));      this.showSubCategoriesHandler();
                 this.setState({categoriesTitleText: maincategory.mainCategory})}}>
-                {maincategory.mainCategory}
+                {t(`categories.${maincategory.mainCategory}`)}
                 </button>
               )
             })
@@ -243,7 +275,6 @@ class Categories extends Component {
             {this.state.startGuidance === false
               ? <Aux>
                 <h2 className={classes.TitleDisplay}>{this.state.chosenCategory.title} {t('categorySearch.section')} ({this.state.chosenCategory.id}):</h2>
-                  <h1 className={classes.MapBox}>MAP HERE</h1>
                   <h1 className={classes.isGuidanceRequired}>{t('categorySearch.h1')}</h1>
                   <Button btnType="No" clicked={() => {this.goBackHandler(); this.props.search()}}>{t('button.back')}</Button>
                   <Button btnType="Proceed" clicked={this.goToCategory}>{t('button.proceed')}</Button>
@@ -253,7 +284,7 @@ class Categories extends Component {
                     <img src={Oodi} className={classes.rectangle} alt="Oodi" />
                   </div>
                 <div>
-                {this.state.arrowMessage === "Bye bye! I'm going back to the starting point!"
+                {this.state.arrowMessage === "bye"
                   ? <Aux>
                       <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
                       <div className={classes.GuidanceContainer}>
@@ -263,7 +294,7 @@ class Categories extends Component {
                       </div>
                     </Aux>
                   : <Aux>
-                      <h1 className={classes.GuidanceMsg}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h1>
+                      <h2 className={classes.GuidanceMsg}>{t(`arrowMessage.${this.state.arrowMessage}`)}</h2>
                       <h2 className={classes.GuidanceSubMsg}>{t(`arrowSubMessage.${this.state.arrowSubMessage}`)}</h2>
 
                       {this.state.arrowDirection === ''

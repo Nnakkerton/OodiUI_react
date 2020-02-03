@@ -12,6 +12,7 @@ import UpArrow from '../../assets/images/Icon-Arrow-Up.svg';
 import CafeLogo from '../../assets/images/Icon-Cafe.svg';
 import WCLogo from '../../assets/images/Icon-WC.svg';
 import StartLogo from '../../assets/images/Border-Image.png';
+import OodiMap from '../../assets/images/OodiWCandCafeMap.png';
 
 function ToiletOrFood(props) {
   const [switchToGuidance, setSwitchToGuidance] = useState(false);
@@ -44,7 +45,7 @@ function ToiletOrFood(props) {
           setSubMsg("I'm returning to my station. See you next time!");
           return returnHomeHandler();
         }
-        else if (response.data.data === 'toilet') {
+        else if (response.data.data === 'WC') {
           setIcon(WCLogo);
           setMessage('We have arrived!');
           setSubMsg("I'll just leave you here.");
@@ -56,12 +57,14 @@ function ToiletOrFood(props) {
         }
         else {
             setIcon(UpArrow);
-            setMessage('Follow me, please!');
+            //setMessage('Follow me, please!');
+            setMessage('Please follow me!');
             if (props.msg === "WC") {
-              setSubMsg('Bringing you to the nearest WC.')
+              setSubMsg('')
+              //setSubMsg('Guiding you to the nearest WC.')
             }
             else if (props.msg === "cafe") {
-              setSubMsg('Bringing you to the café.')
+              setSubMsg('Guiding you to the café.')
             }
           }
           setTimeout(startGuidanceHandler, 2000)
@@ -106,7 +109,7 @@ function ToiletOrFood(props) {
           {t(`toiletOrFoodScreen.${props.msg}`)}
         </div>
         <div>
-          <h1 className={classes.MapBox}>MAP HERE</h1>
+          <img src={OodiMap} className={classes.MapBox} alt="OodiMap" />
         </div>
         <h1 className={classes.WouldYouLikeToilet}>{t('toiletOrFoodScreen.wouldYouLike')}</h1>
         <Button btnType="No" clicked={() => {props.back(); props.showLng()}} value={t('toiletOrFoodScreen.no')} />
