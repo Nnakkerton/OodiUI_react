@@ -24,7 +24,9 @@
     "cafe": "The cafe is here:",
     "wouldYouLike": "Should I take you there?",
     "no": "No thanks.",
-    "yes": "Yes, please!"
+    "yes": "Yes, please!",
+    "arrived": "We have arrived!",
+    "arrivedSubMsg": "I'll just leave you here."
   },
   "bookMenu": {
     "findBookPlaceholder": "Search for books or author (ex: atwood, margaret)",
@@ -92,7 +94,8 @@
     "We have arrived!": "We have arrived!",
     "Follow me, please!": "Follow me, please!",
     "subMsg": "I'm going back to the starting point",
-    "Bye bye!": "Bye bye!"
+    "Bye bye!": "Bye bye!",
+    "bye": "Bye bye!"
   },
   "arrowSubMessage": {
     "Sorry": "I cannot locate that :( You'll have to ask a human. I am sorry!",

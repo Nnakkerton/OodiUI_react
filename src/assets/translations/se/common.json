@@ -1,7 +1,7 @@
 {
   "startMenu": {
     "header": "Hej!",
-    "description1": "Jag är här för att hjälpa dig hitta dig runt biblioteket",
+    "description1": "Jag vill hjälpa dig att hitta runt på biblioteket",
     "startButton": "Börja"
   },
   "mainMenu": {
@@ -19,14 +19,17 @@
       }
   },
   "toiletOrFoodScreen": {
+    "WC": "Närmaste toalett:",
     "nearestWC": "Den närmaste toaletten är:",
     "cafeIs": "Kaféet är här:",
     "wouldYouLike": "Vill du att jag ska ta dig dit?",
     "no": "Nej tack.",
-    "yes": "Ja, tack!"
+    "yes": "Ja, tack!",
+    "arrived": "Vi är framme!",
+    "arrivedSubMsg": "Jag lämnar dig här."
   },
   "bookMenu": {
-    "findBookPlaceholder": "Sök efter böcker...",
+    "findBookPlaceholder": "Sök böcker eller författare (ex: teir, philip)",
     "findCategory": {
       "Book Categories": "Bok Kategorier",
       "Non-fiction" : "Facklitteratur",
@@ -38,12 +41,13 @@
     "available": "Tillgängliga böcker med nyckelordet:",
     "startGuidance": "Vill du bli guidad till följande bok:",
     "title": "Titel:",
-    "author": "Författare:"
-
+    "author": "Författare:",
+    "searching": "Söker efter tillgängliga böcker...",
+    "nonefound": "Inga böcker hittades på detta sökord."
   },
   "categorySearch": {
-    "h1": "Vill du vägledas till kategorin:",
-    "section": "sektion"
+    "h1": "Vill du ta dig till kategorin:",
+    "section": ""
 
   },
   "arrows": {
@@ -54,6 +58,9 @@
     "proceed": "Fortsätt"
   },
   "categories": {
+    "Non-fiction": "Facklitteratur",
+    "Fiction": "Skönlitteratur",
+    "Music": "Musik",
     "Geography & Traveling": "Geografi och Resor",
     "Cookbooks": "Kokböcker",
     "Architecture & Art": "Arkitektur och Konst",
@@ -69,14 +76,14 @@
     "Handicrafts": "Hantverk",
     "Sports & Fitness": "Sport och Fitness",
     "Literature Studies": "Litteraturstudier",
-    "Learn Finnish": "Lär di finska",
+    "Learn Finnish": "Lär dig finska",
     "Audio Books": "Ljudböcker",
     "Plain Language Books": "Vanliga språkböcker",
     "Poetry & Plays": "Poesi och Pjäser",
     "Thriller": "Thriller",
     "Comedy": "Komedi",
-    "Scifi & Fantasy": "Scifi och Fantasi",
-    "Horror": "Sckräck",
+    "Scifi & Fantasy": "Scifi och Fantasy",
+    "Horror": "Skräck",
     "General": "Generell",
     "Swedish": "På svenska",
     "English": "På engelska",
@@ -91,10 +98,19 @@
     "subMsg": "Jag går tillbaka till utgångspunkten."
   },
   "arrowSubMessage": {
-    "Left": "Please check the shelf on the left.",
-    "Right": "Please check the shelf on the right.",
-    "Both": "Please check the shelves on your both sides.",
-    "Homing2": "Jag ska åka hem nu"
+    "Sorry": "Jag hittade tyvärr inte denna tittel :( Du fårlov att fråga en menniska.",
+    "undefined": "Vänligen följ mig!",
+    "Section": "Jag är på väg till den valda kategorin",
+    "Left": "Vänligen leta i hyllan till vänster",
+    "Right": "Vänligen leta i hyllan till höger",
+    "Homing": "Hejdå! Ny går jag hem",
+    "Homing2": "Ny går jag hem",
+    "Both": "Vänligen leta i hyllorna på bägge sidor",
+    "custom1": "Vänligen leta i fem hyllor till höger",
+    "custom2": "Vänligen leta i sju hyllor till höger",
+    "custom3": "Vänligen leta i hyllorna framför dig",
+    "custom_music": "Vänligen leta i fem hyllor till vänster",
+    "custom_pic_books": "Vänligen leta i de fyra hyllorna framför dig"
   },
-  "notification": "Vi är framme!"
+  "notification": "Nu är vi framme!"
 }
