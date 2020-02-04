@@ -95,8 +95,7 @@
     "We have arrived!": "Vi är framme!",
     "Follow me, please!": "Följ efter mig tack!",
     "Bye bye!": "Hejdå!",
-    "subMsg": "Jag går tillbaka till utgångspunkten.",
-    "bye": "Hejdå!"
+    "subMsg": "Jag går tillbaka till utgångspunkten."
   },
   "arrowSubMessage": {
     "Sorry": "Jag hittade tyvärr inte denna tittel :( Du fårlov att fråga en menniska.",
@@ -112,7 +111,6 @@
     "custom3": "Vänligen leta i hyllorna framför dig",
     "custom_music": "Vänligen leta i fem hyllor till vänster",
     "custom_pic_books": "Vänligen leta i de fyra hyllorna framför dig"
-
   },
   "notification": "Nu är vi framme!"
 }
