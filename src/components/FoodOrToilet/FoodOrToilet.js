@@ -41,31 +41,23 @@ function ToiletOrFood(props) {
         console.log("The arrow response from the server is", response.data.data);
         if (response.data.data === 'home') {
           setIcon(HomeImage);
-          setMessage("Bye bye!");
-          setSubMsg("I'm returning to my station. See you next time!");
+          setMessage(t('arrowMessage.bye'));
+          setSubMsg(t('arrowMessage.subMsg'));
           return returnHomeHandler();
         }
         else if (response.data.data === 'WC') {
           setIcon(WCLogo);
-          setMessage('We have arrived!');
-          setSubMsg("I'll just leave you here.");
+          setMessage(t('toiletOrFoodScreen.arrived'));
+          setSubMsg(t('toiletOrFoodScreen.arrivedSubMsg'));
         }
         else if (response.data.data === 'cafe') {
           setIcon(CafeLogo);
-          setMessage('We have arrived!');
-          setSubMsg("I'll just leave you here.");
+          setMessage(t('toiletOrFoodScreen.arrived'));
+          setSubMsg(t('toiletOrFoodScreen.arrivedSubMsg'));
         }
         else {
             setIcon(UpArrow);
-            //setMessage('Follow me, please!');
-            setMessage('Please follow me!');
-            if (props.msg === "WC") {
-              setSubMsg('')
-              //setSubMsg('Guiding you to the nearest WC.')
-            }
-            else if (props.msg === "cafe") {
-              setSubMsg('Guiding you to the café.')
-            }
+            setMessage(t('toiletOrFoodScreen.WCCafeFollow'));
           }
           setTimeout(startGuidanceHandler, 2000)
         }
@@ -127,8 +119,8 @@ function ToiletOrFood(props) {
       ? <Aux>
           <img src={StartLogo} alt="StartLogo" className={classes.StartLogo}/>
           <div className={classes.GuidanceContainer}>
-            <h1 className={classes.GuidanceMsgForHome}>{message}</h1>
-            <h2 className={classes.GuidanceSubMsgForHome}>{subMsg}</h2>
+            <h1 className={classes.GuidanceMsgForHome}>{t('arrowMessage.bye')}</h1>
+            <h2 className={classes.GuidanceSubMsgForHome}>{t('arrowMessage.subMsg')}</h2>
             <img className={classes.IconForHome} src={icon} alt="icon"/>
           </div>
         </Aux>

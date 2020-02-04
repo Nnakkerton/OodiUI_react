@@ -24,7 +24,9 @@
     "wouldYouLike": "Haluatko opastuksen perille?",
     "no": "Ei, kiitos.",
     "yes": "Kyllä, kiitos!",
-    "WCCafeFollow": "Seuratkaa minua!"
+    "WCCafeFollow": "Ole hyvä ja seuraa!",
+    "arrived": "Olemme perillä!",
+    "arrivedSubMsg": "Jätän sinut tähän."
   },
   "bookMenu": {
     "findBookPlaceholder": "Etsi kirjoja tai kirjailijoita (esim: oksanen, sofi)",
@@ -56,7 +58,7 @@
   },
   "categories": {
     "Non-fiction": "Tietokirjat",
-    "Fiction" : "Fiktio",
+    "Fiction" : "Kaunokirjat",
     "Music" : "Musiikki",
     "Geography & Traveling": "Matkailu ja maantiede",
     "Cookbooks": "Keittokirjat",
@@ -92,11 +94,12 @@
     "We have arrived!": "Olemme perillä!",
     "Follow me, please!": "Seuraa minua!",
     "Bye bye!": "Hei hei!",
+    "bye": "Hei hei!",
     "subMsg": "Menen takaisin kotipisteeseeni."
   },
   "arrowSubMessage": {
     "Sorry": "Olen pahoillani, en tiedä sijaintia! Sinun täytyy kysyä ihmiseltä :(",
-    "undefined": "Ole hyvä ja seuraa minua!",
+    "undefined": "Ole hyvä ja seuraa!",
     "Section" : "Olen matkalla valitsemallesi kategorialle",
     "Left": "Ole hyvä ja tarkista vasemmalta",
     "Right": "Ole hyvä ja tarkista oikealta",
